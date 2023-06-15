@@ -3,6 +3,7 @@
 
 #include "framework.h"
 #include "Main.h"
+#include "Define.h"
 
 #define MAX_LOADSTRING 100
 
@@ -41,14 +42,28 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_JUSIN1945));
 
     MSG msg;
+    msg.message = WM_NULL;
+
+    DWORD   dwTime = GetTickCount();
 
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    while (true)
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
+            if (WM_QUIT == msg.message)
+                break;
+
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else {
+            if (dwTime + 10 < GetTickCount()) {
+
+                dwTime = GetTickCount();
+            }
         }
     }
 
@@ -76,7 +91,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_JUSIN1945));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_JUSIN1945);
+    wcex.lpszMenuName   = NULL;
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -97,8 +112,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
+   RECT rc{ 0,0, WINCX, WINCY };
+
+   AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
+
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT, 0, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
@@ -148,6 +167,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
+        }
+        break;
+
+    case WM_KEYDOWN:
+        switch (wParam) {
+        case VK_ESCAPE:
+            DestroyWindow(g_hWnd);
+            break;
         }
         break;
     case WM_DESTROY:
