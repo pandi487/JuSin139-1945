@@ -19,6 +19,9 @@
     <Filter Include="01. Obj">
       <UniqueIdentifier>{0c5ab57a-ac88-460d-8f29-7d9bc46c12b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Design">
+      <UniqueIdentifier>{86d5c7c3-01dd-4565-87ca-cf52db14b6dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -41,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="CObj.h">
       <Filter>01. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>02. Design</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

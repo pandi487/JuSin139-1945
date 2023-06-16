@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "CMainGame.h"
+#include "AbstractFactory.h"
 
 CMainGame::CMainGame()
 {
