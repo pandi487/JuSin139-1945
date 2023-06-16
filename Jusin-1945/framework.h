@@ -13,3 +13,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <algorithm>
+#include <list>
+
+using namespace std;

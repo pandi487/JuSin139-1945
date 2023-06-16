@@ -3,7 +3,7 @@
 
 #include "framework.h"
 #include "Main.h"
-#include "Define.h"
+#include "CMainGame.h"
 
 #define MAX_LOADSTRING 100
 
@@ -11,6 +11,7 @@
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
+HWND    g_hWnd;
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -43,6 +44,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg;
     msg.message = WM_NULL;
+    
+    CMainGame   MainGame;
+    MainGame.Initialize();
 
     DWORD   dwTime = GetTickCount();
 
@@ -61,6 +65,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else {
             if (dwTime + 10 < GetTickCount()) {
+                MainGame.Update();
+                MainGame.Late_Update();
+                MainGame.Render();
 
                 dwTime = GetTickCount();
             }
@@ -112,7 +119,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   RECT rc{ 0,0, WINCX, WINCY };
+   RECT rc{ 0, 0, WINCX, WINCY };
 
    AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
 
@@ -123,6 +130,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    {
       return FALSE;
    }
+
+   g_hWnd = hWnd;
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);

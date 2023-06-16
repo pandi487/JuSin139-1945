@@ -15,5 +15,8 @@ public:
 	void Release();
 
 private:
+	HDC		m_hDC;
+
+	//list<CObj*> m_ObjList[OBJID_END];
 };
 
