@@ -18,7 +18,7 @@ typedef struct tagInfo {
 	float	fDirY;
 } INFO;
 
-enum OBJID { LASER, PLAYER, BULLET, MONSTER, MOUSE, SHIELD, OBJID_END };
+enum OBJID { LASER, PLAYER, BULLET, MONSTER, MOUSE, SHIELD, MINIAIRPLANE, OBJID_END };
 
 template<typename T>
 void Safe_Delete(T& Temp) {

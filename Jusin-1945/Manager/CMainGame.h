@@ -29,5 +29,9 @@ private:
 
 	int		m_iScore;
 	TCHAR	m_szScore[32];
+
+private:
+	DWORD	m_dwTime;
+	int		m_iTime;	// ½Ã°£
 };
 

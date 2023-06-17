@@ -3,7 +3,7 @@
 #include "AbstractFactory.h"
 #include "Collision.h"
 
-CMainGame::CMainGame() : m_iScore(0)
+CMainGame::CMainGame() : m_iTime(0)
 {
 	ZeroMemory(m_szScore, sizeof(m_szScore));
 }
@@ -22,11 +22,13 @@ void CMainGame::Initialize()
 	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Enemy(&m_ObjList[MONSTER]);
 	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Laser(&m_ObjList[LASER]);
 	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Shield(&m_ObjList[SHIELD]);
-	
+	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Mini(&m_ObjList[MINIAIRPLANE]);
+
 	m_ObjList[MONSTER].push_back(CAbstractFactory<CMonster>::Create());
 	
 	//몬스터는 다이나믹 캐스팅 해야하긴 하는데 List 가져올 필요없이 플레이어 하나만 넣으면 될듯?
 }
+
 
 void CMainGame::Update()
 {
@@ -58,12 +60,21 @@ void CMainGame::Late_Update()
 
 void CMainGame::Render()
 {
+	if (m_dwTime + 1000 <= GetTickCount()) {
+		m_dwTime = GetTickCount();
+		m_iTime++;
+	}
+
 	Rectangle(m_hDC, 0, 0, WINCX, WINCY);
 
 	for (size_t i = 0; i < OBJID_END; i++) {
 		for (auto& iter : m_ObjList[i])
 			iter->Render(m_hDC);
 	}
+
+	TCHAR	szTime[32] = L"";
+	wsprintf(szTime, L"Time : %d", m_iTime);
+	TextOut(m_hDC, 50, 40, szTime, lstrlen(szTime));
 
 	// 점수출력 -> 추후 scroe class 만들어서 추가
 	wsprintf(m_szScore, L"Score : %d", m_iScore);

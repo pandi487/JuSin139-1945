@@ -1,8 +1,5 @@
 #include "GuidedBullet.h"
 
-
-
-
 CGuidedBullet::CGuidedBullet()
 {
 }

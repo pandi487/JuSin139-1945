@@ -36,6 +36,7 @@ void CShield::Late_Update(void)
 
 void CShield::Render(HDC hDC)
 {
+	Ellipse(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
 }
 
 void CShield::Release(void)

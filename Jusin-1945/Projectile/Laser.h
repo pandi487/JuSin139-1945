@@ -6,6 +6,13 @@ public:
 	CLaser();
 	virtual ~CLaser();
 
+private:
+	DWORD	m_dwTime;
+	DWORD	m_dwInterval;
+
+	int		m_iTime;	// ½Ã°£
+
+
 public:
 
 	virtual void Initialize(void) override;

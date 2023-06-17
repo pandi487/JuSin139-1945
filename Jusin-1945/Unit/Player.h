@@ -1,11 +1,13 @@
 #pragma once
 
 #include "GameObject.h"
+#include "Projectile/Bullet/Bullet.h"
 #include "Projectile/Bullet/NormalBullet.h"
 #include "Projectile/Bullet/GuidedBullet.h"
-#include "Projectile/Bullet/Bullet.h"
+
 #include "Projectile/Shield.h"
 #include "Projectile/Laser.h"
+#include "MiniAirplane.h"
 
 
 class CPlayer : public CGameObject
@@ -22,6 +24,7 @@ public:
 
 	void		Set_Shield(list<CObj*>* pShield) { m_pShield = pShield; }
 	void		Set_Laser(list<CObj*>* pLaser) { m_pLaser = pLaser; }
+	void		Set_Mini(list<CObj*>* pMini) { m_pMini = pMini; }
 
 public:
 	virtual void Initialize(void)	override;
@@ -41,10 +44,16 @@ private:
 	CObj*		Create_Shield();
 	CObj*		Create_Laser();
 
+	CObj*		Create_Mini();		// 미니 비행기
+
 private:
 	list<CObj*>*		m_pBullet;
 	list<CObj*>*		m_pEnemy;
 	list<CObj*>*		m_pShield;
 	list<CObj*>*		m_pLaser;
+	list<CObj*>*		m_pMini;
+
+private:
+	int 				m_icount = 0;
 };
 

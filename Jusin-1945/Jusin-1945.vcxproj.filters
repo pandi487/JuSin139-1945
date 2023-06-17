@@ -55,6 +55,9 @@
     <Filter Include="01. Obj\02. Projectile\01. Bullet\02. GuideBullet">
       <UniqueIdentifier>{4b1d1682-93b1-4aea-8f2e-764f01ebfcb2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\01. GameObject\02. MiniAirplane">
+      <UniqueIdentifier>{ba5a810c-121e-4b2c-a5ad-dfc6d226ebd5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -108,6 +111,9 @@
     <ClInclude Include="Projectile\Laser.h">
       <Filter>01. Obj\02. Projectile\03. Laser</Filter>
     </ClInclude>
+    <ClInclude Include="Unit\MiniAirplane.h">
+      <Filter>01. Obj\01. GameObject\02. MiniAirplane</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -145,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="Projectile\Laser.cpp">
       <Filter>01. Obj\02. Projectile\03. Laser</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniAirplane.cpp">
+      <Filter>01. Obj\01. GameObject\02. MiniAirplane</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

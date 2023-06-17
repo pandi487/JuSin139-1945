@@ -1,6 +1,6 @@
 #include "Laser.h"
 
-CLaser::CLaser()
+CLaser::CLaser() : m_iTime(0)
 {
 }
 
@@ -19,9 +19,13 @@ int CLaser::Update(void)
     if (m_bDead)
         return OBJ_DEAD;
 
+    if (m_dwTime + 1000 <= GetTickCount()) {
+        m_dwTime = GetTickCount();
+        m_iTime++;
+    }
 
     m_tInfo.fCX = (const float)m_pTarget->Get_Info().fCX + m_fDistance;
-    m_tInfo.fCY = (const float)m_fDistance * 10;
+    m_tInfo.fCY += (const float)m_fDistance;
 
     m_tInfo.fX = (const float)m_pTarget->Get_Info().fX;
     m_tInfo.fY = (const float)m_pTarget->Get_Info().fY - m_fDistance;
@@ -33,6 +37,9 @@ int CLaser::Update(void)
 
 void CLaser::Late_Update(void)
 {
+    if (m_iTime == 5)
+        m_bDead = true;
+
 }
 
 void CLaser::Render(HDC hDC)

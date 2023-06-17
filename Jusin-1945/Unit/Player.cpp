@@ -12,14 +12,13 @@ CPlayer::~CPlayer()
 
 void CPlayer::Initialize(void)
 {
-	m_tInfo = { 400.f, 500.f, 80.f, 80.f  };
+	m_tInfo = { 400.f, 500.f, 80.f, 80.f };
 	m_fSpeed = 5.f;
 }
 
 int CPlayer::Update(void)
 {
 	Key_Input();
-
 
 	__super::Update_Rect();
 
@@ -65,15 +64,28 @@ void CPlayer::Key_Input(void)
 		m_pBullet->push_back(Create_GuidedBullet(-70 , 10));
 	}
 
-	if (GetAsyncKeyState('S'))
+	if (GetAsyncKeyState('S') && m_icount == 0)
+		m_icount = 4;
+	
+	if (m_dwTime <= GetTickCount64() - 275 && m_icount > 0)
+	{
 		m_pShield->push_back(Create_Shield());
+		m_icount--;
+		m_dwTime = GetTickCount64();
+	}
 
 	if (GetAsyncKeyState('L')) {
-		while (GetTickCount() - m_dwTime > 10000) {
+		if (m_dwTime + 1000 <= GetTickCount()) {
 			m_pLaser->push_back(Create_Laser());
 			m_dwTime = GetTickCount();
 		}
+
 	}
+
+	if (GetAsyncKeyState('A')) {
+		m_pMini->push_back(Create_Mini());
+	}
+
 }
 
 CObj* CPlayer::Create_Shield()
@@ -89,8 +101,15 @@ CObj* CPlayer::Create_Laser()
 	CObj* pLaser = CAbstractFactory<CLaser>::Create(m_tInfo.fX, m_tInfo.fY);
 	pLaser->Set_Target(this);
 	
-
 	return pLaser;
+}
+
+CObj* CPlayer::Create_Mini()
+{
+	CObj* pMini = CAbstractFactory<CMiniAirplane>::Create(m_tInfo.fX, m_tInfo.fY);
+	pMini->Set_Target(this);
+
+	return pMini;
 }
 
 CObj * CPlayer::Create_NormalBullet(float _fMuzzleX, float _fMuzzleY)
@@ -120,16 +139,21 @@ CObj* CPlayer::Create_GuidedBullet(float _fMuzzleX, float _fMuzzleY)
 }
 
 void CPlayer::Draw_Body(HDC hDC){
-	HBRUSH hBrush, oldBrush;
+	HBRUSH  hBrush, oldBrush;
+	HPEN	hPen, oldPen;
 
-	hBrush = CreateSolidBrush(RGB(255, 175, 175));		// 색 입히는 코드
+	hBrush = CreateSolidBrush(RGB(255, 250, 250));		// 색 입히는 코드
 	oldBrush = (HBRUSH)SelectObject(hDC, hBrush);
+
+	hPen = CreatePen(PS_SOLID, 2, RGB(122, 62, 62));
+	oldPen = (HPEN)SelectObject(hDC, hPen);
 
 	Ellipse(hDC,
 			  m_tRect.left,
 			  m_tRect.top,
 			  m_tRect.right,
 			  m_tRect.bottom);
+
 	MoveToEx(hDC, (int)m_tInfo.fX, (int)m_tInfo.fY-60, nullptr);
 	LineTo(hDC, (int)m_tInfo.fX - (20) * 0.7, (int)m_tInfo.fY - (50) *0.7);
 	LineTo(hDC, (int)m_tInfo.fX - (20) * 0.7, (int)m_tInfo.fY - (20) *0.7);
@@ -166,6 +190,8 @@ void CPlayer::Draw_Body(HDC hDC){
 	LineTo(hDC, (int)m_tInfo.fX , (int)m_tInfo.fY + 20);
 	
 	SelectObject(hDC, oldBrush);
-
 	DeleteObject(hBrush);
+
+	SelectObject(hDC, oldPen);
+	DeleteObject(hPen);
 }
