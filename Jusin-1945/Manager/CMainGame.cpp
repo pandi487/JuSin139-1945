@@ -2,8 +2,9 @@
 #include "CMainGame.h"
 #include "AbstractFactory.h"
 
-CMainGame::CMainGame()
+CMainGame::CMainGame() : m_iScore(0)
 {
+	ZeroMemory(m_szScore, sizeof(m_szScore));
 }
 
 CMainGame::~CMainGame()
@@ -46,6 +47,14 @@ void CMainGame::Late_Update()
 void CMainGame::Render()
 {
 	Rectangle(m_hDC, 0, 0, WINCX, WINCY);
+
+	for (size_t i = 0; i < OBJID_END; i++) {
+		for (auto& iter : m_ObjList[i])
+			iter->Render(m_hDC);
+	}
+
+	wsprintf(m_szScore, L"Score : %d", m_iScore);
+	TextOut(m_hDC, 50, 60, m_szScore, lstrlen(m_szScore));
 }
 
 void CMainGame::Release()

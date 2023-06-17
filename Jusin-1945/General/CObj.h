@@ -35,6 +35,5 @@ protected:
 	float	m_fSpeed;
 	float	m_fAcceleration;
 	float	m_fDistance;
-	float	m_fAngle;
 };
 

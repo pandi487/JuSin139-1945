@@ -131,26 +131,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Bullet\Bullet.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="General\AbstractFactory.h" />
     <ClInclude Include="General\CObj.h" />
     <ClInclude Include="General\Define.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Manager\CMainGame.h" />
+    <ClInclude Include="Projectile\Bullet\Bullet.h" />
+    <ClInclude Include="Projectile\Shield\Shield.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Shield\Shield.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Unit\GameObject.h" />
     <ClInclude Include="Unit\Monster.h" />
     <ClInclude Include="Unit\Player.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bullet\Bullet.cpp" />
     <ClCompile Include="General\CObj.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager\CMainGame.cpp" />
-    <ClCompile Include="Shield\Shield.cpp" />
+    <ClCompile Include="Projectile\Bullet\Bullet.cpp" />
+    <ClCompile Include="Projectile\Shield\Shield.cpp" />
     <ClCompile Include="Unit\GameObject.cpp" />
     <ClCompile Include="Unit\Monster.cpp" />
     <ClCompile Include="Unit\Player.cpp" />

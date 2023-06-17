@@ -31,10 +31,13 @@
     <Filter Include="01. Obj\01. GameObject\01. Monster">
       <UniqueIdentifier>{4c71cb03-c434-45ee-9cc4-e0e0edb23599}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\02. Bullet">
+    <Filter Include="01. Obj\02. Projectile">
+      <UniqueIdentifier>{400483be-6798-4458-9159-3392daa0345a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Projectile\01. Bullet">
       <UniqueIdentifier>{5a8bcd62-4e9a-486a-abd0-4fde9f2220d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\03. Shield">
+    <Filter Include="01. Obj\02. Projectile\02. Shield">
       <UniqueIdentifier>{2b5c329d-5146-495e-b613-cf398948982a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -63,20 +66,20 @@
     <ClInclude Include="Manager\CMainGame.h">
       <Filter>00. MainGame</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet\Bullet.h">
-      <Filter>01. Obj\02. Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="Unit\GameObject.h">
       <Filter>01. Obj\01. GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Shield\Shield.h">
-      <Filter>01. Obj\03. Shield</Filter>
     </ClInclude>
     <ClInclude Include="Unit\Player.h">
       <Filter>01. Obj\01. GameObject\00. Player</Filter>
     </ClInclude>
     <ClInclude Include="Unit\Monster.h">
       <Filter>01. Obj\01. GameObject\01. Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile\Bullet\Bullet.h">
+      <Filter>01. Obj\02. Projectile\01. Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile\Shield\Shield.h">
+      <Filter>01. Obj\02. Projectile\02. Shield</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -89,20 +92,20 @@
     <ClCompile Include="Manager\CMainGame.cpp">
       <Filter>00. MainGame</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet\Bullet.cpp">
-      <Filter>01. Obj\02. Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="Unit\GameObject.cpp">
       <Filter>01. Obj\01. GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Shield\Shield.cpp">
-      <Filter>01. Obj\03. Shield</Filter>
     </ClCompile>
     <ClCompile Include="Unit\Player.cpp">
       <Filter>01. Obj\01. GameObject\00. Player</Filter>
     </ClCompile>
     <ClCompile Include="Unit\Monster.cpp">
       <Filter>01. Obj\01. GameObject\01. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Bullet\Bullet.cpp">
+      <Filter>01. Obj\02. Projectile\01. Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Shield\Shield.cpp">
+      <Filter>01. Obj\02. Projectile\02. Shield</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
