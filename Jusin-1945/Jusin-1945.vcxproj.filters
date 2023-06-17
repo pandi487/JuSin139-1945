@@ -22,6 +22,21 @@
     <Filter Include="02. Design">
       <UniqueIdentifier>{86d5c7c3-01dd-4565-87ca-cf52db14b6dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\01. GameObject">
+      <UniqueIdentifier>{8c20fb60-d383-43fd-8b74-c6e294592dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. GameObject\00. Player">
+      <UniqueIdentifier>{a3b9cd45-07f1-4ca0-bf45-ef3dd2b390c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. GameObject\01. Monster">
+      <UniqueIdentifier>{4c71cb03-c434-45ee-9cc4-e0e0edb23599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Bullet">
+      <UniqueIdentifier>{5a8bcd62-4e9a-486a-abd0-4fde9f2220d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\03. Shield">
+      <UniqueIdentifier>{2b5c329d-5146-495e-b613-cf398948982a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -36,28 +51,58 @@
     <ClInclude Include="Main.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Define.h">
+    <ClInclude Include="General\AbstractFactory.h">
+      <Filter>02. Design</Filter>
+    </ClInclude>
+    <ClInclude Include="General\Define.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CMainGame.h">
-      <Filter>00. MainGame</Filter>
-    </ClInclude>
-    <ClInclude Include="CObj.h">
+    <ClInclude Include="General\CObj.h">
       <Filter>01. Obj</Filter>
     </ClInclude>
-    <ClInclude Include="AbstractFactory.h">
-      <Filter>02. Design</Filter>
+    <ClInclude Include="Manager\CMainGame.h">
+      <Filter>00. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\Bullet.h">
+      <Filter>01. Obj\02. Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit\GameObject.h">
+      <Filter>01. Obj\01. GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Shield\Shield.h">
+      <Filter>01. Obj\03. Shield</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit\Player.h">
+      <Filter>01. Obj\01. GameObject\00. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit\Monster.h">
+      <Filter>01. Obj\01. GameObject\01. Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CMainGame.cpp">
+    <ClCompile Include="General\CObj.cpp">
+      <Filter>01. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\CMainGame.cpp">
       <Filter>00. MainGame</Filter>
     </ClCompile>
-    <ClCompile Include="CObj.cpp">
-      <Filter>01. Obj</Filter>
+    <ClCompile Include="Bullet\Bullet.cpp">
+      <Filter>01. Obj\02. Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit\GameObject.cpp">
+      <Filter>01. Obj\01. GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Shield\Shield.cpp">
+      <Filter>01. Obj\03. Shield</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit\Player.cpp">
+      <Filter>01. Obj\01. GameObject\00. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit\Monster.cpp">
+      <Filter>01. Obj\01. GameObject\01. Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

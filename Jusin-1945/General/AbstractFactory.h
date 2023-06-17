@@ -7,7 +7,7 @@ class CAbstractFactory {
 public:
 	CAbstractFactory() {};
 	~CAbstractFactory() {};
-
+	
 public:
 	static CObj* Create() {
 		CObj* pObj = new T;

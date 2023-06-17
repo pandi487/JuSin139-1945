@@ -3,7 +3,7 @@
 
 #include "framework.h"
 #include "Main.h"
-#include "CMainGame.h"
+#include "Manager/CMainGame.h"
 
 #define MAX_LOADSTRING 100
 
@@ -48,7 +48,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     CMainGame   MainGame;
     MainGame.Initialize();
 
-    DWORD   dwTime = GetTickCount();
+    DWORD   dwTime = GetTickCount64();
 
     // 기본 메시지 루프입니다:
     while (true)
@@ -64,12 +64,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             }
         }
         else {
-            if (dwTime + 10 < GetTickCount()) {
+            if (dwTime + 10 < GetTickCount64()) {
                 MainGame.Update();
                 MainGame.Late_Update();
                 MainGame.Render();
 
-                dwTime = GetTickCount();
+                dwTime = GetTickCount64();
             }
         }
     }

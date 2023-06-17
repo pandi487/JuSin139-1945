@@ -1,5 +1,6 @@
 #pragma once
 #include "Define.h"
+#include "Unit/Player.h"
 
 class CMainGame
 {
@@ -17,6 +18,6 @@ public:
 private:
 	HDC		m_hDC;
 
-	//list<CObj*> m_ObjList[OBJID_END];
+	list<CObj*> m_ObjList[OBJID_END];
 };
 

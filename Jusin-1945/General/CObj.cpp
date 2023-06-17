@@ -1,6 +1,7 @@
 #include "CObj.h"
 
-CObj::CObj() : m_fSpeed(0.f)
+CObj::CObj() 
+	: m_fSpeed(0.f), m_bDead(false), m_fAngle(0.f), m_fAcceleration(0.f), m_fDistance(0.f)
 {
 	ZeroMemory(&m_tInfo, sizeof(m_tInfo));
 	ZeroMemory(&m_tRect, sizeof(m_tRect));
@@ -8,6 +9,7 @@ CObj::CObj() : m_fSpeed(0.f)
 
 CObj::~CObj()
 {
+	
 }
 
 void CObj::Update_Rect()
