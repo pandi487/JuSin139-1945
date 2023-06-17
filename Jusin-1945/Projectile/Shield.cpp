@@ -20,6 +20,13 @@ void CShield::Initialize(void)
 
 int CShield::Update(void)
 {
+	m_fAngle += m_fSpeed;
+
+	m_tInfo.fX = m_pTarget->Get_Info().fX + m_fDistance * cosf(m_fAngle * (PI / 180.f));
+	m_tInfo.fY = m_pTarget->Get_Info().fY - m_fDistance * sinf(m_fAngle * (PI / 180.f));
+
+	__super::Update_Rect();
+	
 	return OBJ_NOEVENT;
 }
 

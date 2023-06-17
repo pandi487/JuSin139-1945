@@ -16,8 +16,12 @@ void CLaser::Initialize(void)
 
 int CLaser::Update(void)
 {
+    if (m_bDead)
+        return OBJ_DEAD;
+
+
     m_tInfo.fCX = (const float)m_pTarget->Get_Info().fCX + m_fDistance;
-    m_tInfo.fCY = (const float)m_fDistance * 15;
+    m_tInfo.fCY = (const float)m_fDistance * 10;
 
     m_tInfo.fX = (const float)m_pTarget->Get_Info().fX;
     m_tInfo.fY = (const float)m_pTarget->Get_Info().fY - m_fDistance;

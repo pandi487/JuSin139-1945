@@ -20,6 +20,8 @@ void CMainGame::Initialize()
 	m_ObjList[PLAYER].push_back(CAbstractFactory<CPlayer>::Create());
 	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Bullet(&m_ObjList[BULLET]);
 	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Enemy(&m_ObjList[MONSTER]);
+	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Laser(&m_ObjList[LASER]);
+	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Shield(&m_ObjList[SHIELD]);
 	
 	m_ObjList[MONSTER].push_back(CAbstractFactory<CMonster>::Create());
 	
@@ -44,14 +46,14 @@ void CMainGame::Update()
 
 void CMainGame::Late_Update()
 {
+	// 面倒贸府
+	CCollision::Collision_Sphere(m_ObjList[BULLET], m_ObjList[MONSTER]);
+	CCollision::Collision_Rect(m_ObjList[LASER], m_ObjList[MONSTER]);
+
 	for (size_t i = 0; i < OBJID_END; ++i) {
 		for (auto& iter : m_ObjList[i])
 			iter->Late_Update();
 	}
-
-	// 面倒贸府
-	CCollision::Collision_Sphere(m_ObjList[BULLET], m_ObjList[MONSTER]);
-	CCollision::Collision_Rect(m_ObjList[LASER], m_ObjList[MONSTER]);
 }
 
 void CMainGame::Render()

@@ -25,7 +25,7 @@ public:
 	void TargetChoice(list<CObj*>* _ObjList); // 해당 리스트의 순서를 거리순으로 정렬하고 제일 앞의것을 타겟으로 설정함
 
 	CObj* m_Target;
-	list<CObj*>*		m_TargetList; 
+	list<CObj*>*		m_TargetList;
 
 	void Set_TargetList(list<CObj*>* _m_TargetList) { m_TargetList = _m_TargetList;} // 타겟리스트 세팅
 

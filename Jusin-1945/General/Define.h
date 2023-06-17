@@ -13,8 +13,9 @@ typedef struct tagInfo {
 	float	fY;		// 중점 Y
 	float	fCX;	// 가로 길이
 	float	fCY;	// 세로 길이
-	float	fAngle; // 각도
 
+	float	fDirX;
+	float	fDirY;
 } INFO;
 
 enum OBJID { LASER, PLAYER, BULLET, MONSTER, MOUSE, SHIELD, OBJID_END };

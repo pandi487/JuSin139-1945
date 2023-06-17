@@ -28,18 +28,11 @@ int CPlayer::Update(void)
 
 void CPlayer::Late_Update(void)
 {
-	
-
-	
 }
 
 void CPlayer::Render(HDC hDC)
 {
-	
 	Draw_Body(hDC); // 너무 드러워서 아래로 보냈어요
-	
-	
-
 }
 
 void CPlayer::Release(void)
@@ -64,10 +57,7 @@ void CPlayer::Key_Input(void)
 		m_tInfo.fY += m_fSpeed;
 	}
 
-
-	if (GetAsyncKeyState(VK_SPACE))
-	{
-		
+	if (GetAsyncKeyState(VK_SPACE)) {
 		m_pBullet->push_back(Create_NormalBullet(0 , +60));
 		m_pBullet->push_back(Create_NormalBullet(40 , -25));
 		m_pBullet->push_back(Create_NormalBullet(-40 , -25));
@@ -75,7 +65,15 @@ void CPlayer::Key_Input(void)
 		m_pBullet->push_back(Create_GuidedBullet(-70 , 10));
 	}
 
-	
+	if (GetAsyncKeyState('S'))
+		m_pShield->push_back(Create_Shield());
+
+	if (GetAsyncKeyState('L')) {
+		while (GetTickCount() - m_dwTime > 10000) {
+			m_pLaser->push_back(Create_Laser());
+			m_dwTime = GetTickCount();
+		}
+	}
 }
 
 CObj* CPlayer::Create_Shield()
@@ -90,6 +88,7 @@ CObj* CPlayer::Create_Laser()
 {
 	CObj* pLaser = CAbstractFactory<CLaser>::Create(m_tInfo.fX, m_tInfo.fY);
 	pLaser->Set_Target(this);
+	
 
 	return pLaser;
 }

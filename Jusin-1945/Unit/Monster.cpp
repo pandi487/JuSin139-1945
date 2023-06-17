@@ -2,7 +2,6 @@
 
 CMonster::CMonster()
 {
-	m_isDead = false;
 }
 
 CMonster::~CMonster()
@@ -17,22 +16,22 @@ void CMonster::Initialize(void)
 
 int CMonster::Update(void)
 {
-	if (m_isDead)
+	if (m_bDead)
 		return OBJ_DEAD;
 
 	__super::Update_Rect();
 
-	return OBJ_ALIVE;
+	return OBJ_NOEVENT;
 }
 
-void CMonster::LateUpdate(void)
+void CMonster::Late_Update(void)
 {
 	
 }
 
 void CMonster::Render(HDC hDC)
 {
-	if (m_isDead)
+	if (m_bDead)
 		return;
 
 	Rectangle(hDC,

@@ -17,10 +17,9 @@ void CGuidedBullet::Initialize(void)
 	m_tInfo.fCY = 10.f;
 
 	m_fSpeed = 7.f;
-	if (!m_TargetList->empty()) {
+	if (m_TargetList != nullptr && !m_TargetList->empty()) {
 		TargetChoice(m_TargetList);
 		m_Target = m_TargetList->front();
-		
 	}
 	else {
 		m_Target = nullptr;
@@ -38,9 +37,8 @@ int CGuidedBullet::Update(void)
 	if (m_Target != nullptr) {			// 타겟을 향해 라디안 수정
 		float fRelateX = m_tInfo.fX - m_Target->Get_Info().fX;
 		float fRelateY = m_tInfo.fY - m_Target->Get_Info().fY;
-		if (fRelateX >= 0) {
+		if (fRelateX >= 0)
 			m_fRadian = atan(fRelateY / fRelateX) + PI;
-		}
 		else
 			m_fRadian = atan(fRelateY / fRelateX);
 
@@ -59,12 +57,12 @@ int CGuidedBullet::Update(void)
 
 void CGuidedBullet::Late_Update(void)
 {
-
+	if (m_Target != nullptr && m_Target->Get_Dead() ) {
+		m_Target = nullptr;
+	}
 	if (120 > this->Get_Info().fX || WINCX - 120 < this->Get_Info().fX
 		|| 120 > this->Get_Info().fY || WINCY - 120 < this->Get_Info().fY)
-	{
 		m_bDead = true;
-	}
 }
 
 void CGuidedBullet::Render(HDC hDC)
