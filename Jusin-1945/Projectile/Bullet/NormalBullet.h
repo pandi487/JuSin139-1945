@@ -1,10 +1,12 @@
 #pragma once
-#include "CObj.h"
-class CShield : public CObj
+#include "Projectile/Bullet/Bullet.h"
+
+class CNormalBullet		// Radian을 받으면 그 방향으로만 돌진하는 일반 총알
+	: public CBullet
 {
 public:
-	CShield();
-	virtual ~CShield();
+	CNormalBullet();
+	virtual ~CNormalBullet();
 
 public:
 	// CObj을(를) 통해 상속됨
@@ -14,4 +16,3 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 };
-

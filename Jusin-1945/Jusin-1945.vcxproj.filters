@@ -40,6 +40,21 @@
     <Filter Include="01. Obj\02. Projectile\02. Shield">
       <UniqueIdentifier>{2b5c329d-5146-495e-b613-cf398948982a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\02. Projectile\03. Laser">
+      <UniqueIdentifier>{c0aeb5de-425e-4a8f-a4bf-826e24ec6408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Design\00. AbstractFactory">
+      <UniqueIdentifier>{014020bd-e9a9-4749-ac24-3a6dd8917dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Design\01. Collision">
+      <UniqueIdentifier>{08dc6c88-7270-43e7-a9f9-fc9e95e387a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Projectile\01. Bullet\01. NormalBullet">
+      <UniqueIdentifier>{f9238462-b765-4217-8195-048306dd8284}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Projectile\01. Bullet\02. GuideBullet">
+      <UniqueIdentifier>{4b1d1682-93b1-4aea-8f2e-764f01ebfcb2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -53,9 +68,6 @@
     </ClInclude>
     <ClInclude Include="Main.h">
       <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="General\AbstractFactory.h">
-      <Filter>02. Design</Filter>
     </ClInclude>
     <ClInclude Include="General\Define.h">
       <Filter>헤더 파일</Filter>
@@ -75,11 +87,26 @@
     <ClInclude Include="Unit\Monster.h">
       <Filter>01. Obj\01. GameObject\01. Monster</Filter>
     </ClInclude>
+    <ClInclude Include="General\AbstractFactory.h">
+      <Filter>02. Design\00. AbstractFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="General\Collision.h">
+      <Filter>02. Design\01. Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile\Bullet\NormalBullet.h">
+      <Filter>01. Obj\02. Projectile\01. Bullet\01. NormalBullet</Filter>
+    </ClInclude>
     <ClInclude Include="Projectile\Bullet\Bullet.h">
       <Filter>01. Obj\02. Projectile\01. Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="Projectile\Shield\Shield.h">
+    <ClInclude Include="Projectile\Bullet\GuidedBullet.h">
+      <Filter>01. Obj\02. Projectile\01. Bullet\02. GuideBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile\Shield.h">
       <Filter>01. Obj\02. Projectile\02. Shield</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile\Laser.h">
+      <Filter>01. Obj\02. Projectile\03. Laser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -101,11 +128,23 @@
     <ClCompile Include="Unit\Monster.cpp">
       <Filter>01. Obj\01. GameObject\01. Monster</Filter>
     </ClCompile>
+    <ClCompile Include="General\Collision.cpp">
+      <Filter>02. Design\01. Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Bullet\NormalBullet.cpp">
+      <Filter>01. Obj\02. Projectile\01. Bullet\01. NormalBullet</Filter>
+    </ClCompile>
     <ClCompile Include="Projectile\Bullet\Bullet.cpp">
       <Filter>01. Obj\02. Projectile\01. Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Projectile\Shield\Shield.cpp">
+    <ClCompile Include="Projectile\Bullet\GuidedBullet.cpp">
+      <Filter>01. Obj\02. Projectile\01. Bullet\02. GuideBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Shield.cpp">
       <Filter>01. Obj\02. Projectile\02. Shield</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Laser.cpp">
+      <Filter>01. Obj\02. Projectile\03. Laser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

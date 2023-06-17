@@ -9,10 +9,17 @@ public:
 	virtual ~CObj();
 	
 public:
+	INFO	Get_Info() { return m_tInfo; }
+	RECT&	Get_Rect() { return m_tRect; }
+
 	void	Set_Pos(float _fX, float _fY) {
 		m_tInfo.fX = _fX;
 		m_tInfo.fY = _fY;
 	}
+
+	void	Set_Dead(void) { m_bDead = true; }
+	void	Set_Target(CObj* _pTarget) { m_pTarget = _pTarget; }
+	void	Set_Angle(float _fAngle) { m_fAngle = _fAngle; }
 
 public:
 	virtual void	Initialize(void)	PURE;
@@ -32,8 +39,10 @@ protected:
 
 	bool	m_bDead;
 	
-	float	m_fSpeed;
-	float	m_fAcceleration;
-	float	m_fDistance;
+	float	m_fSpeed;			// 속도
+	float	m_fAcceleration;	// 가속도
+	float	m_fDistance;		// 거리
+	float	m_fAngle; // 각도
+
 };
 

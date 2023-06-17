@@ -1,6 +1,13 @@
 #pragma once
 #include "Define.h"
 #include "Unit/Player.h"
+#include "Unit/Monster.h"
+
+#include "Projectile/Shield.h"
+#include "Projectile/Laser.h"
+
+#include "Projectile/Bullet/NormalBullet.h"
+#include "Projectile/Bullet/GuidedBullet.h"
 
 class CMainGame
 {
