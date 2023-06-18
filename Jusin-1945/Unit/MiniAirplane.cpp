@@ -12,16 +12,19 @@ CMiniAirplane::~CMiniAirplane()
 
 void CMiniAirplane::Initialize(void)
 {
-	m_tInfo.fCX = 15.f;
-	m_tInfo.fCY = 15.f;
+	m_tInfo.fCX = 30.f;
+	m_tInfo.fCY = 30.f;
 
 	m_fSpeed = 5.f;
 }
 
 int CMiniAirplane::Update(void)
 {
-	m_tInfo.fX = m_pTarget->Get_Info().fX - 30.f;
+	m_tInfo.fX = m_pTarget->Get_Info().fX;
 	m_tInfo.fY = m_pTarget->Get_Info().fY;
+
+	m_pBullet->push_back(Create_NormalBullet(-150.f, 0));
+	m_pBullet->push_back(Create_NormalBullet(150.f, 0));
 
 	__super::Update_Rect();
 
@@ -30,18 +33,21 @@ int CMiniAirplane::Update(void)
 
 void CMiniAirplane::Late_Update(void)
 {
-	if (m_dwTime + 1000 <= GetTickCount()) {
-		m_pBullet->push_back(Create_NormalBullet(40, -25));
-		m_dwTime = GetTickCount();
-	}
+
 }
 
 void CMiniAirplane::Render(HDC hDC)
 {
-	Rectangle(hDC,
-		m_tRect.left,
+	Ellipse(hDC,
+		m_tRect.left - 150,
 		m_tRect.top,
-		m_tRect.right,
+		m_tRect.right - 150,
+		m_tRect.bottom);
+
+	Ellipse(hDC,
+		m_tRect.left + 150,
+		m_tRect.top,
+		m_tRect.right + 150,
 		m_tRect.bottom);
 }
 

@@ -20,9 +20,8 @@ void CNormalBullet::Initialize(void)
 
 int CNormalBullet::Update(void)
 {
-	if (m_bDead == true) {
+	if (m_bDead)
 		return OBJ_DEAD;
-	}
 
 	m_tInfo.fX -= (m_fSpeed * (cos(m_fRadian)));
 	m_tInfo.fY -= (m_fSpeed * (sin(m_fRadian)));
@@ -34,12 +33,9 @@ int CNormalBullet::Update(void)
 
 void CNormalBullet::Late_Update(void)
 {
-	
 	if (120 > this->Get_Info().fX || WINCX - 120 < this->Get_Info().fX
 		|| 120 > this->Get_Info().fY || WINCY - 120 < this->Get_Info().fY)
-	{
 		m_bDead = true;
-	}
 }
 
 void CNormalBullet::Render(HDC hDC)

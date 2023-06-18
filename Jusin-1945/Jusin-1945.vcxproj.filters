@@ -22,15 +22,6 @@
     <Filter Include="02. Design">
       <UniqueIdentifier>{86d5c7c3-01dd-4565-87ca-cf52db14b6dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\01. GameObject">
-      <UniqueIdentifier>{8c20fb60-d383-43fd-8b74-c6e294592dbf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Obj\01. GameObject\00. Player">
-      <UniqueIdentifier>{a3b9cd45-07f1-4ca0-bf45-ef3dd2b390c3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Obj\01. GameObject\01. Monster">
-      <UniqueIdentifier>{4c71cb03-c434-45ee-9cc4-e0e0edb23599}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Obj\02. Projectile">
       <UniqueIdentifier>{400483be-6798-4458-9159-3392daa0345a}</UniqueIdentifier>
     </Filter>
@@ -55,7 +46,16 @@
     <Filter Include="01. Obj\02. Projectile\01. Bullet\02. GuideBullet">
       <UniqueIdentifier>{4b1d1682-93b1-4aea-8f2e-764f01ebfcb2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\01. GameObject\02. MiniAirplane">
+    <Filter Include="01. Obj\01. Character">
+      <UniqueIdentifier>{8c20fb60-d383-43fd-8b74-c6e294592dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Character\00. Player">
+      <UniqueIdentifier>{a3b9cd45-07f1-4ca0-bf45-ef3dd2b390c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Character\01. Monster">
+      <UniqueIdentifier>{4c71cb03-c434-45ee-9cc4-e0e0edb23599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Character\02. MiniAirplane">
       <UniqueIdentifier>{ba5a810c-121e-4b2c-a5ad-dfc6d226ebd5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -82,13 +82,13 @@
       <Filter>00. MainGame</Filter>
     </ClInclude>
     <ClInclude Include="Unit\GameObject.h">
-      <Filter>01. Obj\01. GameObject</Filter>
+      <Filter>01. Obj\01. Character</Filter>
     </ClInclude>
     <ClInclude Include="Unit\Player.h">
-      <Filter>01. Obj\01. GameObject\00. Player</Filter>
+      <Filter>01. Obj\01. Character\00. Player</Filter>
     </ClInclude>
     <ClInclude Include="Unit\Monster.h">
-      <Filter>01. Obj\01. GameObject\01. Monster</Filter>
+      <Filter>01. Obj\01. Character\01. Monster</Filter>
     </ClInclude>
     <ClInclude Include="General\AbstractFactory.h">
       <Filter>02. Design\00. AbstractFactory</Filter>
@@ -112,7 +112,7 @@
       <Filter>01. Obj\02. Projectile\03. Laser</Filter>
     </ClInclude>
     <ClInclude Include="Unit\MiniAirplane.h">
-      <Filter>01. Obj\01. GameObject\02. MiniAirplane</Filter>
+      <Filter>01. Obj\01. Character\02. MiniAirplane</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -126,13 +126,13 @@
       <Filter>00. MainGame</Filter>
     </ClCompile>
     <ClCompile Include="Unit\GameObject.cpp">
-      <Filter>01. Obj\01. GameObject</Filter>
+      <Filter>01. Obj\01. Character</Filter>
     </ClCompile>
     <ClCompile Include="Unit\Player.cpp">
-      <Filter>01. Obj\01. GameObject\00. Player</Filter>
+      <Filter>01. Obj\01. Character\00. Player</Filter>
     </ClCompile>
     <ClCompile Include="Unit\Monster.cpp">
-      <Filter>01. Obj\01. GameObject\01. Monster</Filter>
+      <Filter>01. Obj\01. Character\01. Monster</Filter>
     </ClCompile>
     <ClCompile Include="General\Collision.cpp">
       <Filter>02. Design\01. Collision</Filter>
@@ -152,8 +152,8 @@
     <ClCompile Include="Projectile\Laser.cpp">
       <Filter>01. Obj\02. Projectile\03. Laser</Filter>
     </ClCompile>
-    <ClCompile Include="MiniAirplane.cpp">
-      <Filter>01. Obj\01. GameObject\02. MiniAirplane</Filter>
+    <ClCompile Include="Unit\MiniAirplane.cpp">
+      <Filter>01. Obj\01. Character\02. MiniAirplane</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

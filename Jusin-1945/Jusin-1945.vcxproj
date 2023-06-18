@@ -155,13 +155,13 @@
     <ClCompile Include="General\Collision.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager\CMainGame.cpp" />
-    <ClCompile Include="MiniAirplane.cpp" />
     <ClCompile Include="Projectile\Bullet\Bullet.cpp" />
     <ClCompile Include="Projectile\Bullet\GuidedBullet.cpp" />
     <ClCompile Include="Projectile\Bullet\NormalBullet.cpp" />
     <ClCompile Include="Projectile\Laser.cpp" />
     <ClCompile Include="Projectile\Shield.cpp" />
     <ClCompile Include="Unit\GameObject.cpp" />
+    <ClCompile Include="Unit\MiniAirplane.cpp" />
     <ClCompile Include="Unit\Monster.cpp" />
     <ClCompile Include="Unit\Player.cpp" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 #include "Shield.h"
 
-CShield::CShield()
+CShield::CShield() : m_iTime(0)
 {
 }
 
@@ -20,6 +20,14 @@ void CShield::Initialize(void)
 
 int CShield::Update(void)
 {
+	if (m_bDead)
+		return OBJ_DEAD;
+
+	if (m_dwTime + 1000 <= GetTickCount()) {
+		m_dwTime = GetTickCount();
+		m_iTime++;
+	}
+
 	m_fAngle += m_fSpeed;
 
 	m_tInfo.fX = m_pTarget->Get_Info().fX + m_fDistance * cosf(m_fAngle * (PI / 180.f));
@@ -32,6 +40,8 @@ int CShield::Update(void)
 
 void CShield::Late_Update(void)
 {
+	if (m_iTime == 10)
+		m_bDead = true;
 }
 
 void CShield::Render(HDC hDC)

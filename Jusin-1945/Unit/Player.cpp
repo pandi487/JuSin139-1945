@@ -57,22 +57,22 @@ void CPlayer::Key_Input(void)
 	}
 
 	if (GetAsyncKeyState(VK_SPACE)) {
-		m_pBullet->push_back(Create_NormalBullet(0 , +60));
-		m_pBullet->push_back(Create_NormalBullet(40 , -25));
-		m_pBullet->push_back(Create_NormalBullet(-40 , -25));
-		m_pBullet->push_back(Create_GuidedBullet(70 , 10));
-		m_pBullet->push_back(Create_GuidedBullet(-70 , 10));
+		m_pBullet->push_back(Create_NormalBullet(0.f , +60.f));
+		m_pBullet->push_back(Create_NormalBullet(40.f , -25.f));
+		m_pBullet->push_back(Create_NormalBullet(-40.f , -25.f));
+		m_pBullet->push_back(Create_GuidedBullet(70.f , 10.f));
+		m_pBullet->push_back(Create_GuidedBullet(-70.f , 10.f));
 	}
 
 	if (GetAsyncKeyState('S') && m_icount == 0)
 		m_icount = 4;
-	
-	if (m_dwTime <= GetTickCount64() - 275 && m_icount > 0)
-	{
-		m_pShield->push_back(Create_Shield());
-		m_icount--;
-		m_dwTime = GetTickCount64();
+
+	if ((m_dwTime <= GetTickCount() - 275) && m_icount > 0) {
+			m_pShield->push_back(Create_Shield());
+			m_icount--;
+			m_dwTime = GetTickCount();
 	}
+	
 
 	if (GetAsyncKeyState('L')) {
 		if (m_dwTime + 1000 <= GetTickCount()) {
@@ -82,9 +82,8 @@ void CPlayer::Key_Input(void)
 
 	}
 
-	if (GetAsyncKeyState('A')) {
+	if (GetAsyncKeyState('A') )
 		m_pMini->push_back(Create_Mini());
-	}
 
 }
 

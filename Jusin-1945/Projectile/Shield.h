@@ -14,6 +14,8 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 
+private:
+	int		m_iTime;	// 시간
 	
 };
 
