@@ -15,7 +15,7 @@ void CPlayer::Initialize(void)
 	m_tInfo = { 400.f, 500.f, 80.f, 80.f };
 	m_fSpeed = 5.f;
 	
-	m_iTeam = 0;
+	m_iTeam = 1;
 }
 
 int CPlayer::Update(void)
@@ -131,6 +131,7 @@ CObj* CPlayer::Create_NormalBullet(float _fMuzzleX, float _fMuzzleY)
 	CNormalBullet* pCreated = dynamic_cast<CNormalBullet*>(
 									CAbstractFactory<CNormalBullet>::Create(m_tInfo.fX, m_tInfo.fY));
 	pCreated->Set_Owner(this);
+	pCreated->Set_Team(this->m_iTeam);
 	pCreated->Set_Bulletinfo(fRadian, m_tInfo.fX + _fMuzzleX, m_tInfo.fY + _fMuzzleY, 20.f, 5.f);
 
 	return pCreated;
@@ -141,6 +142,7 @@ CObj* CPlayer::Create_GuidedBullet(float _fMuzzleX, float _fMuzzleY)
 	CGuidedBullet* pCreated = dynamic_cast<CGuidedBullet*>(
 									CAbstractFactory<CGuidedBullet>::Create(m_tInfo.fX, m_tInfo.fY));
 	pCreated->Set_Owner(this);
+	pCreated->Set_Team(this->m_iTeam);
 	pCreated->Set_Target(this);
 	pCreated->Set_Bulletinfo(m_tInfo.fX + _fMuzzleX, m_tInfo.fY + _fMuzzleX);
 
@@ -153,6 +155,7 @@ CObj* CPlayer::Create_MissileBullet(float _fMuzzleX, float _fMuzzleY)
 	CMissileBullet* pCreated = dynamic_cast<CMissileBullet*>(
 								CAbstractFactory<CMissileBullet>::Create(m_tInfo.fX, m_tInfo.fY));
 	pCreated->Set_Owner(this);
+	pCreated->Set_Team(this->m_iTeam);
 	pCreated->Set_Target(this);
 
 	return pCreated;
@@ -164,6 +167,7 @@ CObj* CPlayer::Create_ReturnBullet(float _fMuzzleX, float _fMuzzleY)
 		CAbstractFactory<CReturnBullet>::Create(m_tInfo.fX, m_tInfo.fY));
 
 	pCreated->Set_Owner(this);
+	pCreated->Set_Team(this->m_iTeam);
 	pCreated->Set_Target(this);
 
 	return pCreated;
@@ -174,6 +178,7 @@ CObj* CPlayer::Create_Shield()
 	CShield* pCreated = dynamic_cast<CShield*>(
 							CAbstractFactory<CShield>::Create(m_tInfo.fX, m_tInfo.fY));
 	pCreated->Set_Owner(this);
+	pCreated->Set_Team(this->m_iTeam);
 	pCreated->Set_Target(this);
 
 	return pCreated;
@@ -184,6 +189,7 @@ CObj* CPlayer::Create_Laser()
 	CLaser* pCreated = dynamic_cast<CLaser*>(
 							CAbstractFactory<CLaser>::Create(m_tInfo.fX, m_tInfo.fY));
 	pCreated->Set_Owner(this);
+	pCreated->Set_Team(this->m_iTeam);
 	pCreated->Set_Target(this);
 
 	return pCreated;
@@ -194,6 +200,7 @@ CObj* CPlayer::Create_Mini()
 	CMiniAirplane* pCreated = dynamic_cast<CMiniAirplane*>(
 									CAbstractFactory<CMiniAirplane>::Create(m_tInfo.fX, m_tInfo.fY));
 	pCreated->Set_Owner(this);
+	pCreated->Set_Team(this->m_iTeam);
 	pCreated->Set_Target(this);
 
 	return pCreated;

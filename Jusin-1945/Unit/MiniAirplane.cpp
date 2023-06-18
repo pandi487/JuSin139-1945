@@ -72,8 +72,9 @@ CObj* CMiniAirplane::Create_NormalBullet(float _fMuzzleX, float _fMuzzleY)
 
 	CNormalBullet* pCreated = dynamic_cast<CNormalBullet*>(
 								CAbstractFactory<CNormalBullet>::Create(m_tInfo.fX, m_tInfo.fY));
-	pCreated->Set_Owner(this);
 	pCreated->Set_Bulletinfo(fRadian, m_tInfo.fX + _fMuzzleX, m_tInfo.fY + _fMuzzleY);
+	pCreated->Set_Owner(this);
+	pCreated->Set_Team(this->m_iTeam);
 
 	return pCreated;
 }

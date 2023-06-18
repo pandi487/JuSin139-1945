@@ -5,6 +5,8 @@
 
 void CMonster_TypeB::Initialize(void)
 {
+	__super::Initialize();
+
 	m_tInfo = { 400.f, 500.f, 20.f, 20.f };
 	m_fSpeed = 2.f;
 	m_spinspeed = 300.f;
@@ -95,11 +97,12 @@ void CMonster_TypeB::TimeLimit(void)
 
 CObj* CMonster_TypeB::Create_Bullet(float _fRadian, float _fMuzzleX, float _fMuzzleY)
 {
-	CObj* pNormalBullet = CAbstractFactory<CNormalBullet>::Create(m_tInfo.fX, m_tInfo.fY);
-	CNormalBullet* pTemp = dynamic_cast<CNormalBullet*>(pNormalBullet);
-	pNormalBullet->Initialize();
-	pTemp->Set_Bulletinfo(_fRadian, _fMuzzleX, _fMuzzleY,10.f,3.f);
+	CNormalBullet* pCreated = dynamic_cast<CNormalBullet*>(
+							CAbstractFactory<CNormalBullet>::Create(m_tInfo.fX, m_tInfo.fY));
+	pCreated->Set_Bulletinfo(_fRadian, _fMuzzleX, _fMuzzleY,10.f,3.f);
+	pCreated->Set_Owner(this);
+	pCreated->Set_Team(this->m_iTeam);
 	
 
-	return pNormalBullet;
+	return pCreated;
 }

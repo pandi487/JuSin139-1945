@@ -29,7 +29,7 @@ public:
 	
 
 public:
-	virtual void Initialize(void) override		PURE;
+	virtual void Initialize(void) override;
 	virtual int  Update(void) override			PURE;
 	virtual void Late_Update(void) override		PURE;
 	virtual void Render(HDC hDC) override		PURE;

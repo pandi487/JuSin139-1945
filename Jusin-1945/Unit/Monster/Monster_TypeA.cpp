@@ -5,6 +5,8 @@
 
 void CMonster_TypeA::Initialize(void)
 {
+	__super::Initialize();
+
 	m_tInfo = { 400.f, 500.f, 60.f, 60.f };
 	m_fSpeed = 2.f;
 	m_spinspeed = 300.f;
@@ -12,6 +14,8 @@ void CMonster_TypeA::Initialize(void)
 	m_fAngle = 270.f;
 
 	m_pBullet = &CMainGame::Get_Instance().Get_ObjList()[BULLET];
+
+	
 }
 
 int CMonster_TypeA::Update(void)
@@ -72,8 +76,13 @@ void CMonster_TypeA::Collide(CObj& _rDst)
 void CMonster_TypeA::TimeLimit(void)
 {
 	DWORD dwCurrentTime = GetTickCount64();
-	if (dwCurrentTime - m_dwTime >= 200) {
-		SwitchOn = !SwitchOn;
+	if (dwCurrentTime - m_dwTime >= 1)
+	{
+		SwitchOn = false;
+	}
+	if (dwCurrentTime - m_dwTime >= 800)
+	{
+		SwitchOn = true;
 		m_dwTime = dwCurrentTime;
 	}
 }
@@ -82,8 +91,9 @@ CObj* CMonster_TypeA::Create_Bullet(float _fRadian, float _fMuzzleX, float _fMuz
 {
 	CNormalBullet* pCreated = dynamic_cast<CNormalBullet*>(
 								CAbstractFactory<CNormalBullet>::Create());
-	pCreated->Set_Owner(this);
 	pCreated->Set_Bulletinfo(_fRadian, _fMuzzleX, _fMuzzleY);
+	pCreated->Set_Owner(this);
+	pCreated->Set_Team(this->m_iTeam);
 
 	return pCreated;
 }

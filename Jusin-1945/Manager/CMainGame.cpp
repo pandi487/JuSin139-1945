@@ -59,7 +59,9 @@ void CMainGame::Update()
 void CMainGame::Late_Update()
 {
 	// 충돌처리
+	CCollision::Collision_Sphere(m_ObjList[BULLET], m_ObjList[PLAYER]);
 	CCollision::Collision_Sphere(m_ObjList[BULLET], m_ObjList[MONSTER]);
+	CCollision::Collision_Rect(m_ObjList[LASER], m_ObjList[BULLET]);
 	CCollision::Collision_Rect(m_ObjList[LASER], m_ObjList[MONSTER]);
 	CCollision::Collision_Sphere(m_ObjList[SHIELD], m_ObjList[MONSTER]);
 	CCollision::Collision_Sphere(m_ObjList[SHIELD], m_ObjList[BULLET]);

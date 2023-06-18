@@ -16,7 +16,7 @@ void CReturnBullet::Initialize(void)
 	m_tInfo.fCY = 15.f;
 
 	m_fSpeed = 5.f;
-	m_fAcceleration = -0.25;
+	m_fAcceleration = -0.02;
 }
 
 int CReturnBullet::Update(void)
@@ -24,8 +24,9 @@ int CReturnBullet::Update(void)
 	if (m_bDead)
 		return OBJ_DEAD;
 
-	m_fSpeed += m_fAcceleration;
-
+	while (m_fSpeed == 0) {
+		m_fSpeed += m_fAcceleration;
+	}
 	m_tInfo.fX = m_pTarget->Get_Info().fX;
 	m_tInfo.fY -= m_fSpeed;
 
@@ -40,6 +41,11 @@ void CReturnBullet::Late_Update(void)
 
 void CReturnBullet::Render(HDC hDC)
 {
+	Ellipse(hDC,
+		m_tRect.left,
+		m_tRect.top,
+		m_tRect.right,
+		m_tRect.bottom);
 }
 
 void CReturnBullet::Release(void)
