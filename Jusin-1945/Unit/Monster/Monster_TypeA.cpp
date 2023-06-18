@@ -3,7 +3,6 @@
 #include "Projectile/Bullet/NormalBullet.h"
 #include "Manager/CMainGame.h"
 
-
 void CMonster_TypeA::Initialize(void)
 {
 	m_tInfo = { 400.f, 500.f, 60.f, 60.f };
@@ -25,8 +24,7 @@ int CMonster_TypeA::Update(void)
 	m_tInfo.fX += cos(m_fRadian) * m_fSpeed;
 	m_tInfo.fY -= sin(m_fRadian) * m_fSpeed;
 
-	if (m_isOnField)
-	{
+	if (m_isOnField) {
 		TimeLimit();
 		if (SwitchOn)
 			m_pBullet->push_back(Create_Bullet(m_fRadian, m_tInfo.fX + m_fMuzzleX, m_tInfo.fY + m_fMuzzleY));
@@ -34,19 +32,15 @@ int CMonster_TypeA::Update(void)
 			|| 125 > m_tInfo.fY || WINCY - 125 < m_tInfo.fY)
 			Change_Angle();
 	}
-	else if (!m_isOnField)
-	{
-
+	else if (!m_isOnField) {
 		if (125 < m_tInfo.fX && WINCX - 125 > m_tInfo.fX
 			&& 125 < m_tInfo.fY && WINCY - 125 > m_tInfo.fY)
 			m_isOnField = !m_isOnField;
 	}
 
-
 	__super::Update_Rect();
 
 	return OBJ_NOEVENT;
-
 }
 
 void CMonster_TypeA::Late_Update(void)
@@ -70,11 +64,14 @@ void CMonster_TypeA::Release(void)
 {
 }
 
+void CMonster_TypeA::Collide(CObj& _rDst)
+{
+}
+
 void CMonster_TypeA::TimeLimit(void)
 {
 	DWORD dwCurrentTime = GetTickCount64();
-	if (dwCurrentTime - m_dwTime >= 200)
-	{
+	if (dwCurrentTime - m_dwTime >= 200) {
 		SwitchOn = !SwitchOn;
 		m_dwTime = dwCurrentTime;
 	}

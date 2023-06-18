@@ -39,14 +39,14 @@ void CMissileBullet::Late_Update(void)
 
 void CMissileBullet::Render(HDC hDC)
 {
-	HBRUSH  hBrush, oldBrush;
-	HPEN	hPen, oldPen;
+	//HBRUSH  hBrush, oldBrush;
+	//HPEN	hPen, oldPen;
 
-	hBrush = CreateSolidBrush(RGB(255, 255, 153));		// 색 입히는 코드
-	oldBrush = (HBRUSH)SelectObject(hDC, hBrush);
+	//hBrush = CreateSolidBrush(RGB(255, 255, 153));		// 색 입히는 코드
+	//oldBrush = (HBRUSH)SelectObject(hDC, hBrush);
 
-	hPen = CreatePen(PS_SOLID, 2, RGB(255, 255, 153));
-	oldPen = (HPEN)SelectObject(hDC, hPen);
+	//hPen = CreatePen(PS_SOLID, 2, RGB(255, 255, 153));
+	//oldPen = (HPEN)SelectObject(hDC, hPen);
 
 	Ellipse(hDC,
 		m_tRect.left,
@@ -54,14 +54,19 @@ void CMissileBullet::Render(HDC hDC)
 		m_tRect.right,
 		m_tRect.bottom);
 
-	SelectObject(hDC, oldBrush);
-	DeleteObject(hBrush);
+	//SelectObject(hDC, oldBrush);
+	//DeleteObject(hBrush);
 
-	SelectObject(hDC, oldPen);
-	DeleteObject(hPen);
+	//SelectObject(hDC, oldPen);
+	//DeleteObject(hPen);
 
 }
 
 void CMissileBullet::Release(void)
 {
+}
+
+void CMissileBullet::Collide(CObj& _rDst)
+{
+    
 }

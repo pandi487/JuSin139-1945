@@ -38,6 +38,10 @@ void CPlayer::Release(void)
 {
 }
 
+void CPlayer::Collide(CObj& _rDst)
+{
+}
+
 void CPlayer::Key_Input(void)
 {
 	// GetKeyState();
@@ -158,7 +162,6 @@ CObj* CPlayer::Create_GuidedBullet(float _fMuzzleX, float _fMuzzleY)
 	CGuidedBullet* pTemp = dynamic_cast<CGuidedBullet*>(pGuidedBullet);
 
 	pTemp->Set_Bulletinfo(m_tInfo.fX - _fMuzzleX, m_tInfo.fY - _fMuzzleY);
-	pTemp->Set_TargetList(m_pTarget);
 	pGuidedBullet->Initialize();
 
 	return pGuidedBullet;
@@ -170,8 +173,8 @@ CObj* CPlayer::Create_MissileBullet(float _fMuzzleX, float _fMuzzleY)
 	CMissileBullet* pTemp = dynamic_cast<CMissileBullet*>(pMissileBullet);
 
 	pTemp->Set_Bulletinfo(m_tInfo.fX - _fMuzzleX, m_tInfo.fY - _fMuzzleY);
-	pMissileBullet->Initialize();
 	pTemp->Set_Target(this);
+	pMissileBullet->Initialize();
 
 	return pMissileBullet;
 }

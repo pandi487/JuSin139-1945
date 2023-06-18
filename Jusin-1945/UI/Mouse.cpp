@@ -56,3 +56,8 @@ void CMouse::Render(HDC hDC)
 void CMouse::Release(void)
 {
 }
+
+void CMouse::Collide(CObj& _rDst)
+{
+    
+}

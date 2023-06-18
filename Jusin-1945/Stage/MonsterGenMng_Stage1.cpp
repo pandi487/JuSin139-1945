@@ -42,10 +42,6 @@ void CMonsterGenMng_Stage1::Late_Update(void)
 {
 }
 
-void CMonsterGenMng_Stage1::Render(HDC hDC)
-{
-}
-
 void CMonsterGenMng_Stage1::Release(void)
 {
 }

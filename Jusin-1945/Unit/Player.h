@@ -40,9 +40,9 @@ private:
 	void		Key_Input(void);
 
 private:
-	CObj*		Create_NormalBullet(float _fMuzzleX, float _fMuzzleY); // -y방향으로만 나가는 총알 발사
-	CObj*		Create_GuidedBullet(float _fMuzzleX, float _fMuzzleY); // 유도 총알 발사
-	CObj*		Create_MissileBullet(float _fMuzzleX, float _fMuzzleY); // 미사일 발사
+	CObj*		Create_NormalBullet(float _fMuzzleX, float _fMuzzleY);	 // -y방향으로만 나가는 총알 발사
+	CObj*		Create_GuidedBullet(float _fMuzzleX, float _fMuzzleY);	 // 유도 총알 발사
+	CObj*		Create_MissileBullet(float _fMuzzleX, float _fMuzzleY);  // 미사일 발사
 	
 	CObj*		Create_Shield();
 	CObj*		Create_Laser();

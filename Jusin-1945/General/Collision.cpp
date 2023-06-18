@@ -14,8 +14,8 @@ void CCollision::Collision_Rect(list<CObj*> _Dst, list<CObj*> _Src)
 	for (auto& Dst : _Dst) {
 		for (auto& Src : _Src) {
 			if (IntersectRect(&rc, &(Dst->Get_Rect()), &(Src->Get_Rect()))) {
-				Dst->Set_Dead(Src);
-				Src->Set_Dead(Dst);
+				Dst->Collide(*Src);
+				Src->Collide(*Dst);
 			}
 		}
 	}
@@ -26,8 +26,8 @@ void CCollision::Collision_Sphere(list<CObj*> _Dst, list<CObj*> _Src)
 	for (auto& Dst : _Dst) {
 		for (auto& Src : _Src) {
 			if (Check_Sphere(Dst, Src)) {
-				Dst->Set_Dead(Src);
-				Src->Set_Dead(Dst);
+				Dst->Collide(*Src);
+				Src->Collide(*Dst);
 			}
 		}
 	}

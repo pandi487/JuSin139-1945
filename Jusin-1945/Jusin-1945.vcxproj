@@ -164,7 +164,6 @@
     <ClCompile Include="Manager\CMainGame.cpp" />
     <ClCompile Include="Manager\MonsterGenerateManager.cpp" />
     <ClCompile Include="Manager\MonsterGenerator.cpp" />
-    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Projectile\Bullet\Bullet.cpp" />
     <ClCompile Include="Projectile\Bullet\GuidedBullet.cpp" />
     <ClCompile Include="Projectile\Bullet\MissileBullet.cpp" />
@@ -172,6 +171,7 @@
     <ClCompile Include="Projectile\Laser.cpp" />
     <ClCompile Include="Projectile\Shield.cpp" />
     <ClCompile Include="Stage\MonsterGenMng_Stage1.cpp" />
+    <ClCompile Include="UI\Mouse.cpp" />
     <ClCompile Include="UI\Score.cpp" />
     <ClCompile Include="Unit\GameObject.cpp" />
     <ClCompile Include="Unit\MiniAirplane.cpp" />

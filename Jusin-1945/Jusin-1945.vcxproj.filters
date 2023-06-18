@@ -215,7 +215,7 @@
     <ClCompile Include="Projectile\Bullet\MissileBullet.cpp">
       <Filter>01. Obj\02. Projectile\01. Bullet\03. MissileBullet</Filter>
     </ClCompile>
-    <ClCompile Include="Mouse.cpp">
+    <ClCompile Include="UI\Mouse.cpp">
       <Filter>02. Design\02. Mouse</Filter>
     </ClCompile>
   </ItemGroup>

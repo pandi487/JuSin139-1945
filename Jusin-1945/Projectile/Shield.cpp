@@ -40,7 +40,7 @@ int CShield::Update(void)
 
 void CShield::Late_Update(void)
 {
-	if (m_iTime == 10)
+	if (m_iTime == 10)		// 10초 뒤에 삭제
 		m_bDead = true;
 }
 
@@ -67,4 +67,9 @@ void CShield::Render(HDC hDC)
 
 void CShield::Release(void)
 {
+}
+
+void CShield::Collide(CObj& _rDst)
+{
+    
 }

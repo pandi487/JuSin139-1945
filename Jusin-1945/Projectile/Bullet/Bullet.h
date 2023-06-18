@@ -22,8 +22,11 @@ public:
 	void Set_Bulletinfo(float _fRadian, float _Xpos, float _Ypos);
 	void Set_Bulletinfo(float _Xpos, float _Ypos);
 
+protected:
+	
 
 public:
+	// 날아가는 방향
     float m_fRadian;
 };
 

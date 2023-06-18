@@ -25,7 +25,7 @@ int CLaser::Update(void)
     }
 
     m_tInfo.fCX = (const float)m_pTarget->Get_Info().fCX + m_fDistance;
-    m_tInfo.fCY += (const float)m_fDistance;
+    m_tInfo.fCY += (const float)m_fDistance;        // 계속 증가
 
     m_tInfo.fX = (const float)m_pTarget->Get_Info().fX;
     m_tInfo.fY = (const float)m_pTarget->Get_Info().fY - m_fDistance;
@@ -37,7 +37,7 @@ int CLaser::Update(void)
 
 void CLaser::Late_Update(void)
 {
-    if (m_iTime == 5)
+    if (m_iTime == 5)       // 5초 뒤에 삭제
         m_bDead = true;
 
 }
@@ -64,4 +64,9 @@ void CLaser::Render(HDC hDC)
 
 void CLaser::Release(void)
 {
+}
+
+void CLaser::Collide(CObj& _rDst)
+{
+    
 }
