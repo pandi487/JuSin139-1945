@@ -11,7 +11,7 @@ void CMonster_TypeB::Initialize(void)
 	m_fSpeed = 2.f;
 	m_spinspeed = 300.f;
 	m_isOnField = false;
-	m_fAngle = 180;
+	m_fAngle = 270.f;
 
 	m_pBullet = &CMainGame::Get_Instance().Get_ObjList()[BULLET];
 	m_pTarget = CMainGame::Get_Instance().Get_ObjFront(PLAYER);
@@ -76,6 +76,10 @@ void CMonster_TypeB::Render(HDC hDC)
 }
 
 void CMonster_TypeB::Release(void)
+{
+}
+
+void CMonster_TypeB::Collide(CObj& _rDst)
 {
 }
 

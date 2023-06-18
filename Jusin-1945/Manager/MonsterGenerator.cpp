@@ -5,6 +5,8 @@
 #include "Unit/GameObject.h"
 #include "Monster/Monster.h"
 #include "Monster/Monster_TypeA.h"
+#include "Monster/Monster_TypeB.h"
+#include "Monster/Boss_A.h"
 
 CMonsterGenerator::CMonsterGenerator()
 {
@@ -45,6 +47,9 @@ int CMonsterGenerator::Update(void)
 
 void CMonsterGenerator::Late_Update(void)
 {
+	if (!m_bStart_Create)
+	return;
+
 	// WAVE 타입일 때 생성한 모든 몬스터가 사망시 파괴
 	if (WAVE == m_eType)
 	{
@@ -98,18 +103,21 @@ void CMonsterGenerator::Create_Monster(DWORD& _timer)
 		break;
 	case SPEED:
 		m_MainGame_MonsterList->push_back(
-			CAbstractFactory<CMonster_TypeA>::Create(pMonsterInfo->ptPosition.x, pMonsterInfo->ptPosition.y)
+			CAbstractFactory<CMonster_TypeB>::Create(pMonsterInfo->ptPosition.x, pMonsterInfo->ptPosition.y)
 			);
 		break;
 	case BOSS:
 		m_MainGame_MonsterList->push_back(
-			CAbstractFactory<CMonster_TypeA>::Create(pMonsterInfo->ptPosition.x, pMonsterInfo->ptPosition.y)
+			CAbstractFactory<CBoss_A>::Create(pMonsterInfo->ptPosition.x, pMonsterInfo->ptPosition.y)
 			);
 		break;
 	}
     CGameObject* pGameObj = dynamic_cast<CGameObject*>(m_MainGame_MonsterList->back());
     pGameObj->Get_StatusInfo().fMaxHP = (float)pMonsterInfo->iHP;
     pGameObj->Get_StatusInfo().fMaxHP = (float)pMonsterInfo->iHP;
+
+    if (WAVE == m_eType)
+        m_MonsterObsList.push_back(pGameObj);
 
 	// 생성된 것은 제외하기
 	m_MonsterCreateList.pop_front();

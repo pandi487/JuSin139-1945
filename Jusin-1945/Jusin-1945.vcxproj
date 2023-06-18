@@ -158,6 +158,7 @@
     <ClInclude Include="UI\Score.h" />
     <ClInclude Include="Unit\GameObject.h" />
     <ClInclude Include="Unit\MiniAirplane.h" />
+    <ClInclude Include="Unit\Monster\Boss_A.h" />
     <ClInclude Include="Unit\Monster\Monster.h" />
     <ClInclude Include="Unit\Monster\Monster_TypeA.h" />
     <ClInclude Include="Unit\Monster\Monster_TypeB.h" />
@@ -186,6 +187,7 @@
     <ClCompile Include="UI\Score.cpp" />
     <ClCompile Include="Unit\GameObject.cpp" />
     <ClCompile Include="Unit\MiniAirplane.cpp" />
+    <ClCompile Include="Unit\Monster\Boss_A.cpp" />
     <ClCompile Include="Unit\Monster\Monster.cpp" />
     <ClCompile Include="Unit\Monster\Monster_TypeA.cpp" />
     <ClCompile Include="Unit\Monster\Monster_TypeB.cpp" />

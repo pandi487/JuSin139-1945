@@ -72,17 +72,29 @@ void CMonsterGenMng_Stage1::Phase_1()
 {
     CMonsterGenerator* pGenerator = dynamic_cast<CMonsterGenerator*>(CAbstractFactory<CMonsterGenerator>::Create());
 	m_GeneratorList.push_back(pGenerator);
-	/*for (int i = 0; i < 1000; ++i)
+    m_GeneratorList.back()->Set_Type(CMonsterGenerator::GENERATOR_TYPE::WAVE);
+	for (int i = 0; i < 25; ++i)
 	{
-		int randomX = (rand() % (WINCX - 200)) + 100;
-		DWORD randomTime = rand() % 10 + 1000;
-		m_GeneratorList.back()->Add_Monster({ randomTime, { randomX, 0 }, 10, 0 });
-	}*/
-
-    pGenerator->Add_Monster({ 60, { WINCX / 2, 0 }, 10, CMonsterGenerator::MONSTER_TYPE::BOSS });
+		int randomX = (rand() % (WINCX - 280)) + 140;
+		DWORD randomTime = rand() % 10 + 30;
+		m_GeneratorList.back()->Add_Monster({ randomTime, { randomX, 0 }, 10, CMonsterGenerator::MONSTER_TYPE::NORMAL });
+	}
 }
 
 void CMonsterGenMng_Stage1::Phase_2()
+{
+	CMonsterGenerator* pGenerator = dynamic_cast<CMonsterGenerator*>(CAbstractFactory<CMonsterGenerator>::Create());
+	m_GeneratorList.push_back(pGenerator);
+    m_GeneratorList.back()->Set_Type(CMonsterGenerator::GENERATOR_TYPE::WAVE);
+    for (int i = 0; i < 25; ++i)
+	{
+		int randomX = (rand() % (WINCX - 280)) + 140;
+		DWORD randomTime = rand() % 10 + 30;
+		m_GeneratorList.back()->Add_Monster({ randomTime, { randomX, 0 }, 10, CMonsterGenerator::MONSTER_TYPE::NORMAL });
+	}
+}
+
+void CMonsterGenMng_Stage1::Phase_3()
 {
 	CMonsterGenerator* pGenerator = dynamic_cast<CMonsterGenerator*>(CAbstractFactory<CMonsterGenerator>::Create());
 	m_GeneratorList.push_back(pGenerator);
@@ -91,18 +103,11 @@ void CMonsterGenMng_Stage1::Phase_2()
     pGenerator->Add_Monster({ 60, { WINCX / 2, 0 }, 10, CMonsterGenerator::MONSTER_TYPE::BOSS });
 }
 
-void CMonsterGenMng_Stage1::Phase_3()
-{
-	CMonsterGenerator* pGenerator = dynamic_cast<CMonsterGenerator*>(CAbstractFactory<CMonsterGenerator>::Create());
-	m_GeneratorList.push_back(pGenerator);
-
-    pGenerator->Add_Monster({ 60, { WINCX / 2, 0 }, 10, CMonsterGenerator::MONSTER_TYPE::BOSS });
-}
-
 void CMonsterGenMng_Stage1::Phase_4()
 {
 	CMonsterGenerator* pGenerator = dynamic_cast<CMonsterGenerator*>(CAbstractFactory<CMonsterGenerator>::Create());
 	m_GeneratorList.push_back(pGenerator);
+    m_GeneratorList.back()->Set_Type(CMonsterGenerator::GENERATOR_TYPE::WAVE);
 
     pGenerator->Add_Monster({ 60, { WINCX / 2, 0 }, 10, CMonsterGenerator::MONSTER_TYPE::BOSS });
 }
@@ -111,6 +116,7 @@ void CMonsterGenMng_Stage1::Phase_5()
 {
 	CMonsterGenerator* pGenerator = dynamic_cast<CMonsterGenerator*>(CAbstractFactory<CMonsterGenerator>::Create());
 	m_GeneratorList.push_back(pGenerator);
+    m_GeneratorList.back()->Set_Type(CMonsterGenerator::GENERATOR_TYPE::WAVE);
 
     pGenerator->Add_Monster({ 60, { WINCX / 2, 0 }, 10, CMonsterGenerator::MONSTER_TYPE::BOSS });
 }

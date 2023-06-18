@@ -97,6 +97,9 @@
     <Filter Include="01. Obj\02. Projectile\01. Bullet\06. Napalm">
       <UniqueIdentifier>{ed0590f6-9e64-4b07-85fd-06cf8e724224}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\01. Character\01. Monster\03. Boss">
+      <UniqueIdentifier>{ed50c43d-b3f9-4c87-b177-593101ea88be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -192,6 +195,9 @@
     <ClInclude Include="Projectile\Bullet\NapalmBullet.h">
       <Filter>01. Obj\02. Projectile\01. Bullet\06. Napalm</Filter>
     </ClInclude>
+    <ClInclude Include="Unit\Monster\Boss_A.h">
+      <Filter>01. Obj\01. Character\01. Monster\03. Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -271,6 +277,9 @@
     </ClCompile>
     <ClCompile Include="Projectile\Bullet\NapalmBullet.cpp">
       <Filter>01. Obj\02. Projectile\01. Bullet\06. Napalm</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit\Monster\Boss_A.cpp">
+      <Filter>01. Obj\01. Character\01. Monster\03. Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
