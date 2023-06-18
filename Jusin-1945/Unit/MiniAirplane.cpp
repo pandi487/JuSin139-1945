@@ -12,8 +12,8 @@ CMiniAirplane::~CMiniAirplane()
 
 void CMiniAirplane::Initialize(void)
 {
-	m_tInfo.fCX = 30.f;
-	m_tInfo.fCY = 30.f;
+	m_tInfo.fCX = 40.f;
+	m_tInfo.fCY = 40.f;
 
 	m_fSpeed = 5.f;
 }
@@ -23,8 +23,12 @@ int CMiniAirplane::Update(void)
 	m_tInfo.fX = m_pTarget->Get_Info().fX;
 	m_tInfo.fY = m_pTarget->Get_Info().fY;
 
-	m_pBullet->push_back(Create_NormalBullet(-150.f, 0));
-	m_pBullet->push_back(Create_NormalBullet(150.f, 0));
+	if (m_dwTime + 1000 <= GetTickCount()) {
+		m_pBullet->push_back(Create_NormalBullet(-150.f, 0));
+		m_pBullet->push_back(Create_NormalBullet(150.f, 0));
+		m_dwTime = GetTickCount();
+	}
+
 
 	__super::Update_Rect();
 
@@ -33,7 +37,6 @@ int CMiniAirplane::Update(void)
 
 void CMiniAirplane::Late_Update(void)
 {
-
 }
 
 void CMiniAirplane::Render(HDC hDC)
@@ -59,11 +62,14 @@ CObj* CMiniAirplane::Create_NormalBullet(float _fMuzzleX, float _fMuzzleY)
 {
 	float fRadian = PI / 2; // 위쪽으로 발사시키기위함
 
+	CObj* pBullet = new CNormalBullet;
+
 	CObj* pNormalBullet = CAbstractFactory<CNormalBullet>::Create(m_tInfo.fX, m_tInfo.fY);
 	CNormalBullet* pTemp = dynamic_cast<CNormalBullet*>(pNormalBullet);
 
-	pTemp->Set_Bulletinfo(fRadian, m_tInfo.fX - _fMuzzleX, m_tInfo.fY - _fMuzzleY);
+	pTemp->Set_Bulletinfo(fRadian, m_tInfo.fX - _fMuzzleX, m_tInfo.fY);
 	pNormalBullet->Initialize();
+	pBullet->Initialize();
 
 	return pNormalBullet;
 }

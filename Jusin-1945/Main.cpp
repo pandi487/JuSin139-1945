@@ -45,7 +45,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
     msg.message = WM_NULL;
     
-    CMainGame   MainGame;
+    CMainGame&   MainGame = CMainGame::Get_Instance();
     MainGame.Initialize();
 
     DWORD   dwTime = GetTickCount64();

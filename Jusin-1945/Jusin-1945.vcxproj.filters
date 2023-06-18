@@ -58,6 +58,21 @@
     <Filter Include="01. Obj\01. Character\02. MiniAirplane">
       <UniqueIdentifier>{ba5a810c-121e-4b2c-a5ad-dfc6d226ebd5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. UI">
+      <UniqueIdentifier>{acfb7a3a-4b05-4e77-af7e-f6f44aa184aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. UI\01. Score">
+      <UniqueIdentifier>{3aae2c91-a2f5-4295-9897-4369569a18ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Character\01. Monster\00. Manager">
+      <UniqueIdentifier>{577d13c8-d212-4d92-a6b0-ef1c8d46d174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Character\01. Monster\01. Type A">
+      <UniqueIdentifier>{bdc0ae1c-99fd-4278-bb55-1f72426a97e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Stage">
+      <UniqueIdentifier>{a317903e-caf6-4f19-a2f6-48ad5f4df072}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -87,9 +102,6 @@
     <ClInclude Include="Unit\Player.h">
       <Filter>01. Obj\01. Character\00. Player</Filter>
     </ClInclude>
-    <ClInclude Include="Unit\Monster.h">
-      <Filter>01. Obj\01. Character\01. Monster</Filter>
-    </ClInclude>
     <ClInclude Include="General\AbstractFactory.h">
       <Filter>02. Design\00. AbstractFactory</Filter>
     </ClInclude>
@@ -114,6 +126,24 @@
     <ClInclude Include="Unit\MiniAirplane.h">
       <Filter>01. Obj\01. Character\02. MiniAirplane</Filter>
     </ClInclude>
+    <ClInclude Include="UI\Score.h">
+      <Filter>03. UI\01. Score</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit\Monster\Monster.h">
+      <Filter>01. Obj\01. Character\01. Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit\Monster\Monster_TypeA.h">
+      <Filter>01. Obj\01. Character\01. Monster\01. Type A</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\MonsterGenerateManager.h">
+      <Filter>01. Obj\01. Character\01. Monster\00. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\MonsterGenerator.h">
+      <Filter>01. Obj\01. Character\01. Monster\00. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage\MonsterGenMng_Stage1.h">
+      <Filter>04. Stage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -130,9 +160,6 @@
     </ClCompile>
     <ClCompile Include="Unit\Player.cpp">
       <Filter>01. Obj\01. Character\00. Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Unit\Monster.cpp">
-      <Filter>01. Obj\01. Character\01. Monster</Filter>
     </ClCompile>
     <ClCompile Include="General\Collision.cpp">
       <Filter>02. Design\01. Collision</Filter>
@@ -154,6 +181,24 @@
     </ClCompile>
     <ClCompile Include="Unit\MiniAirplane.cpp">
       <Filter>01. Obj\01. Character\02. MiniAirplane</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit\Monster\Monster.cpp">
+      <Filter>01. Obj\01. Character\01. Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit\Monster\Monster_TypeA.cpp">
+      <Filter>01. Obj\01. Character\01. Monster\01. Type A</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\MonsterGenerateManager.cpp">
+      <Filter>01. Obj\01. Character\01. Monster\00. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\MonsterGenerator.cpp">
+      <Filter>01. Obj\01. Character\01. Monster\00. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Score.cpp">
+      <Filter>03. UI\01. Score</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage\MonsterGenMng_Stage1.cpp">
+      <Filter>04. Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

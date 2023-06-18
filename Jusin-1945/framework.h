@@ -13,7 +13,11 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <ctime>
+
 #include <algorithm>
 #include <list>
+#include <vector>
+#include <map>
 
 using namespace std;

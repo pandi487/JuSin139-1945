@@ -31,22 +31,26 @@ public:
 
 protected:
 	void	Update_Rect();
+	void	Update_Timers();
 
 protected:
 	INFO	m_tInfo;
 	RECT	m_tRect;
 
 	CObj*	m_pTarget;
+	CObj*	m_pBullet;
 
 	bool	m_bDead;
+
+	vector<DWORD>	m_dwTimers;
 	
 	float	m_fSpeed;			// 속도
 	float	m_fAcceleration;	// 가속도
 	float	m_fDistance;		// 거리
-	float	m_fAngle; // 각도
+	float	m_fAngle;			// 각도
 
 protected:
-	DWORD	m_dwTime;		// 시간
+	DWORD	m_dwTime;			// 시간
 
 };
 

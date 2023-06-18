@@ -43,19 +43,40 @@ void CPlayer::Key_Input(void)
 	// GetKeyState();
 
 	if (GetAsyncKeyState(VK_LEFT)) {
-		
-		m_tInfo.fX -= m_fSpeed;
-	}
-	if (GetAsyncKeyState(VK_RIGHT)) {
-		m_tInfo.fX += m_fSpeed;
-	}
-	if (GetAsyncKeyState(VK_UP)) {
-		m_tInfo.fY -= m_fSpeed;
-	}
-	if (GetAsyncKeyState(VK_DOWN)) {
-		m_tInfo.fY += m_fSpeed;
+		if (GetAsyncKeyState(VK_UP)) {
+			m_tInfo.fX -= m_fSpeed / sqrt(2.f);
+			m_tInfo.fY -= m_fSpeed / sqrt(2.f);
+		}
+		else if (GetAsyncKeyState(VK_DOWN)) {
+			m_tInfo.fX -= m_fSpeed / sqrt(2.f);
+			m_tInfo.fY += m_fSpeed / sqrt(2.f);
+		}
+		else
+			m_tInfo.fX -= m_fSpeed;
 	}
 
+	else if (GetAsyncKeyState(VK_RIGHT))
+	{
+		if (GetAsyncKeyState(VK_UP)) {
+			m_tInfo.fX += m_fSpeed / sqrt(2.f);
+			m_tInfo.fY -= m_fSpeed / sqrt(2.f);
+		}
+		else if (GetAsyncKeyState(VK_DOWN)) {
+			m_tInfo.fX += m_fSpeed / sqrt(2.f);
+			m_tInfo.fY += m_fSpeed / sqrt(2.f);
+		}
+		else
+			m_tInfo.fX += m_fSpeed;
+	}
+
+	else if (GetAsyncKeyState(VK_UP))
+		m_tInfo.fY -= m_fSpeed;
+
+	else if (GetAsyncKeyState(VK_DOWN))
+		m_tInfo.fY += m_fSpeed;
+
+
+	// 총알 발사
 	if (GetAsyncKeyState(VK_SPACE)) {
 		m_pBullet->push_back(Create_NormalBullet(0.f , +60.f));
 		m_pBullet->push_back(Create_NormalBullet(40.f , -25.f));
@@ -64,6 +85,7 @@ void CPlayer::Key_Input(void)
 		m_pBullet->push_back(Create_GuidedBullet(-70.f , 10.f));
 	}
 
+	// 실드 생성
 	if (GetAsyncKeyState('S') && m_icount == 0)
 		m_icount = 4;
 
@@ -73,15 +95,15 @@ void CPlayer::Key_Input(void)
 			m_dwTime = GetTickCount();
 	}
 	
-
+	// 레이저 발사
 	if (GetAsyncKeyState('L')) {
 		if (m_dwTime + 1000 <= GetTickCount()) {
 			m_pLaser->push_back(Create_Laser());
 			m_dwTime = GetTickCount();
 		}
-
 	}
 
+	// 미니 비행기 (보조 비행기) 생성 (1초마다 총알 발사)
 	if (GetAsyncKeyState('A') )
 		m_pMini->push_back(Create_Mini());
 
@@ -107,6 +129,7 @@ CObj* CPlayer::Create_Mini()
 {
 	CObj* pMini = CAbstractFactory<CMiniAirplane>::Create(m_tInfo.fX, m_tInfo.fY);
 	pMini->Set_Target(this);
+	dynamic_cast<CMiniAirplane*>(pMini)->Set_Bullet(m_pBullet);
 
 	return pMini;
 }
@@ -131,7 +154,7 @@ CObj* CPlayer::Create_GuidedBullet(float _fMuzzleX, float _fMuzzleY)
 	CGuidedBullet* pTemp = dynamic_cast<CGuidedBullet*>(pGuidedBullet);
 
 	pTemp->Set_Bulletinfo(m_tInfo.fX - _fMuzzleX, m_tInfo.fY - _fMuzzleY);
-	pTemp->Set_TargetList(m_pEnemy);
+	pTemp->Set_TargetList(m_pTarget);
 	pGuidedBullet->Initialize();
 
 	return pGuidedBullet;

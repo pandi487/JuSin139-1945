@@ -2,10 +2,14 @@
 #include "CMainGame.h"
 #include "AbstractFactory.h"
 #include "Collision.h"
+#include "Stage/MonsterGenMng_Stage1.h"
+
+CMainGame CMainGame::g_pInstance;
 
 CMainGame::CMainGame() : m_iTime(0)
 {
 	ZeroMemory(m_szScore, sizeof(m_szScore));
+	ZeroMemory(m_szTime, sizeof(m_szTime));
 }
 
 CMainGame::~CMainGame()
@@ -19,14 +23,18 @@ void CMainGame::Initialize()
 
 	m_ObjList[PLAYER].push_back(CAbstractFactory<CPlayer>::Create());
 	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Bullet(&m_ObjList[BULLET]);
-	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Enemy(&m_ObjList[MONSTER]);
+	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Target(&m_ObjList[MONSTER]);
 	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Laser(&m_ObjList[LASER]);
 	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Shield(&m_ObjList[SHIELD]);
 	dynamic_cast<CPlayer*>(m_ObjList[PLAYER].front())->Set_Mini(&m_ObjList[MINIAIRPLANE]);
 
-	m_ObjList[MONSTER].push_back(CAbstractFactory<CMonster>::Create());
+	m_ObjList[MONSTER].push_back(CAbstractFactory<CMonster_TypeA>::Create(0,0,225));
 	
-	//몬스터는 다이나믹 캐스팅 해야하긴 하는데 List 가져올 필요없이 플레이어 하나만 넣으면 될듯?
+	//몬스터는 다이나믹 캐스팅 해야a하긴 하는데 List 가져올 필요없이 플레이어 하나만 넣으면 될듯?
+	if (m_ObjList[MANAGER].empty())
+	{
+		m_ObjList[MANAGER].push_back(CAbstractFactory<CMonsterGenMng_Stage1>::Create());
+	}
 }
 
 
@@ -72,12 +80,11 @@ void CMainGame::Render()
 			iter->Render(m_hDC);
 	}
 
-	TCHAR	szTime[32] = L"";
-	wsprintf(szTime, L"Time : %d", m_iTime);
-	TextOut(m_hDC, 50, 40, szTime, lstrlen(szTime));
+	wsprintf(m_szTime, L"Time : %d", m_iTime);
+	TextOut(m_hDC, 50, 40, m_szTime, lstrlen(m_szTime));
 
-	// 점수출력 -> 추후 scroe class 만들어서 추가
-	wsprintf(m_szScore, L"Score : %d", m_iScore);
+	// 점수출력
+	wsprintf(m_szScore, L"Score : %d", m_ObjList[SCORE].size());
 	TextOut(m_hDC, 50, 60, m_szScore, lstrlen(m_szScore));
 }
 

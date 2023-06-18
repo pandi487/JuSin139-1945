@@ -23,4 +23,13 @@ public:
 
 		return pObj;
 	}
+
+	static CObj* Create(float _fX, float _fY, float _fAngel) {
+		CObj* pObj = new T;
+		pObj->Initialize();
+
+		pObj->Set_Pos(_fX, _fY);
+		pObj->Set_Angle(_fAngel);
+		return pObj;
+	}
 };

@@ -19,7 +19,7 @@ public:
 
 public:
 	void		Set_Bullet(list<CObj*>* pBullet) { m_pBullet = pBullet; }
-	void		Set_Enemy(list<CObj*>* pEnemy) { m_pEnemy = pEnemy; }
+	void		Set_Target(list<CObj*>* pTarget) { m_pTarget = pTarget; }
 	// 플레이어에 총알 세팅 하면서 에너미리스트도 세팅 해줘야 유도총알이 나가요!
 
 	void		Set_Shield(list<CObj*>* pShield) { m_pShield = pShield; }
@@ -43,17 +43,16 @@ private:
 	
 	CObj*		Create_Shield();
 	CObj*		Create_Laser();
-
 	CObj*		Create_Mini();		// 미니 비행기
 
 private:
 	list<CObj*>*		m_pBullet;
-	list<CObj*>*		m_pEnemy;
+	list<CObj*>*		m_pTarget;
 	list<CObj*>*		m_pShield;
 	list<CObj*>*		m_pLaser;
 	list<CObj*>*		m_pMini;
 
 private:
-	int 				m_icount = 0;
+	int 				m_icount = 0;		// 실드 원 개수
 };
 

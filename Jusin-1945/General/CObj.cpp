@@ -20,3 +20,20 @@ void CObj::Update_Rect()
 	m_tRect.bottom	= LONG(m_tInfo.fY + (m_tInfo.fCY * 0.5));
 
 }
+
+void CObj::Update_Timers()
+{
+	if (m_dwTimers.empty())
+		return;
+
+	for (auto& timer : m_dwTimers)
+	{
+		if (timer == 0 || timer == (DWORD)(-1))
+		{
+			timer = (DWORD)(-1) -1;
+			continue;
+		}
+
+		--timer;
+	}
+}

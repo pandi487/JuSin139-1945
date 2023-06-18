@@ -72,7 +72,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)/;$(ProjectDir)/General/;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)/Unit;$(ProjectDir)/;$(ProjectDir)/General/;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -138,16 +138,21 @@
     <ClInclude Include="General\Define.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Manager\CMainGame.h" />
+    <ClInclude Include="Manager\MonsterGenerateManager.h" />
+    <ClInclude Include="Manager\MonsterGenerator.h" />
     <ClInclude Include="Projectile\Bullet\Bullet.h" />
     <ClInclude Include="Projectile\Bullet\GuidedBullet.h" />
     <ClInclude Include="Projectile\Bullet\NormalBullet.h" />
     <ClInclude Include="Projectile\Laser.h" />
     <ClInclude Include="Projectile\Shield.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Stage\MonsterGenMng_Stage1.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="UI\Score.h" />
     <ClInclude Include="Unit\GameObject.h" />
     <ClInclude Include="Unit\MiniAirplane.h" />
-    <ClInclude Include="Unit\Monster.h" />
+    <ClInclude Include="Unit\Monster\Monster.h" />
+    <ClInclude Include="Unit\Monster\Monster_TypeA.h" />
     <ClInclude Include="Unit\Player.h" />
   </ItemGroup>
   <ItemGroup>
@@ -155,14 +160,19 @@
     <ClCompile Include="General\Collision.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager\CMainGame.cpp" />
+    <ClCompile Include="Manager\MonsterGenerateManager.cpp" />
+    <ClCompile Include="Manager\MonsterGenerator.cpp" />
     <ClCompile Include="Projectile\Bullet\Bullet.cpp" />
     <ClCompile Include="Projectile\Bullet\GuidedBullet.cpp" />
     <ClCompile Include="Projectile\Bullet\NormalBullet.cpp" />
     <ClCompile Include="Projectile\Laser.cpp" />
     <ClCompile Include="Projectile\Shield.cpp" />
+    <ClCompile Include="Stage\MonsterGenMng_Stage1.cpp" />
+    <ClCompile Include="UI\Score.cpp" />
     <ClCompile Include="Unit\GameObject.cpp" />
     <ClCompile Include="Unit\MiniAirplane.cpp" />
-    <ClCompile Include="Unit\Monster.cpp" />
+    <ClCompile Include="Unit\Monster\Monster.cpp" />
+    <ClCompile Include="Unit\Monster\Monster_TypeA.cpp" />
     <ClCompile Include="Unit\Player.cpp" />
   </ItemGroup>
   <ItemGroup>

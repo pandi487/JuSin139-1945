@@ -20,10 +20,9 @@ public:
 	void		Set_Bullet(list<CObj*>* pBullet) { m_pBullet = pBullet; }
 
 private:
-	CObj*	Create_NormalBullet(float _fMuzzleX, float _fMuzzleY); // -y방향으로만 나가는 총알 발사
+	CObj*		Create_NormalBullet(float _fMuzzleX, float _fMuzzleY); // -y방향으로만 나가는 총알 발사
 
 private:
 	list<CObj*>* m_pBullet;
-	list<CObj*> m_ObjList[OBJID_END];
 };
 

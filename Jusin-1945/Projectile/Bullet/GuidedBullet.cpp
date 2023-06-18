@@ -75,8 +75,6 @@ void CGuidedBullet::Release(void)
 {
 }
 
-
-
 float CGuidedBullet::Distance(CObj* _obj)
 {
 	float dist = sqrt((_obj->Get_Info().fX) * (_obj->Get_Info().fX) + (_obj->Get_Info().fY * (_obj->Get_Info().fY)));
