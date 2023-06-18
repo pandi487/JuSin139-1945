@@ -56,6 +56,9 @@ protected:
 	// 메인 게임에 추가하기 위한 포인터
 	list<CObj*>* m_MainGame_MonsterList = nullptr;
 
+protected:
+    bool m_bStart_Create = false;
+
 public:
 	void Set_MonsterList(list<CObj*>* value) { m_MainGame_MonsterList = value; }
 
@@ -64,5 +67,9 @@ public:
 	{
 		m_MonsterCreateList.push_back(value);
 	}
+
+    void Set_Type(GENERATOR_TYPE value) { m_eType = value; }
+
+    void Set_StartCreate() { m_bStart_Create = true; }
 };
 

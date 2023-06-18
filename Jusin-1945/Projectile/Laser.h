@@ -1,6 +1,8 @@
 #pragma once
 #include "CObj.h"
-class CLaser : public CObj
+#include "Bullet/Bullet.h"
+
+class CLaser : public CBullet
 {
 public:
 	CLaser();

@@ -6,6 +6,9 @@
 #include "Projectile/Bullet/GuidedBullet.h"
 #include "Projectile/Bullet/MissileBullet.h"
 #include "Projectile/Bullet/ReturnBullet.h"
+#include "Projectile/Bullet/Bomb.h"
+#include "Projectile/Bullet/NapalmBullet.h"
+#include "Projectile/Bullet/SonicWaveBullet.h"
 
 #include "Projectile/Shield.h"
 #include "Projectile/Laser.h"
@@ -41,10 +44,13 @@ private:
 	void		Key_Input(void);
 
 private:
-	CObj*		Create_NormalBullet(float _fMuzzleX, float _fMuzzleY);	 // -y방향으로만 나가는 총알 발사
-	CObj*		Create_GuidedBullet(float _fMuzzleX, float _fMuzzleY);	 // 유도 총알 발사
-	CObj*		Create_MissileBullet(float _fMuzzleX, float _fMuzzleY);  // 미사일 발사
-	CObj*		Create_ReturnBullet(float _fMuzzleX, float _fMuzzleY);	 // 중간에 떨어지는 총알
+	CObj*		Create_NormalBullet		(float _fMuzzleX, float _fMuzzleY);		// -y방향으로만 나가는 총알 발사
+	CObj*		Create_GuidedBullet		(float _fMuzzleX, float _fMuzzleY);		// 유도 총알 발사
+	CObj*		Create_MissileBullet	(float _fMuzzleX, float _fMuzzleY);		// 미사일 발사
+	CObj*		Create_ReturnBullet		(float _fMuzzleX, float _fMuzzleY);		// 중간에 떨어지는 총알
+	CObj*		Create_NapalmBullet		(float _fMuzzleX, float _fMuzzleY);		// 네이팜탄 발사
+	CObj*		Create_Bomb		   		();										// 폭격기 발사
+	CObj*		Create_CSonicWaveBullet	(float _fMuzzleX, float _fMuzzleY);		// 음파 발사
 	
 	CObj*		Create_Shield();
 	CObj*		Create_Laser();
@@ -58,6 +64,10 @@ private:
 	list<CObj*>*		m_pMini;
 
 private:
-	int 				m_icount = 0;		// 실드 원 개수
+	int 				m_icount = 0;					// 실드 원 개수
+	int					m_iPrimaryWeapon_MaxDelay = 6;	// 0.1초
+	int					m_iPrimaryWeapon_Delay = 0;		// 주무기 발사 딜레이
+	int 				m_iSonicWaveCount = 0; 			//음파 개수
+	int 				m_iNapalm_Bomb_Count = 0; 		//네이팜탄 개수
 };
 

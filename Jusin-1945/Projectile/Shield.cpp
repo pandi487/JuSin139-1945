@@ -73,13 +73,15 @@ void CShield::Release(void)
 void CShield::Collide(CObj& _rDst)
 {
 	CGameObject* pGObj = dynamic_cast<CGameObject*>(&_rDst);
-	if (nullptr != pGObj && this->Get_Owner() != pGObj)
+	if (nullptr != pGObj && this->Get_Owner() != pGObj 
+		&& this->Get_TeamID() != pGObj->Get_TeamID())
 	{
 		pGObj->Set_Dead();
 	}
 
 	CBullet* pBullet = dynamic_cast<CBullet*>(&_rDst);
-	if (nullptr != pBullet && this->Get_Owner() != pBullet)
+	if (nullptr != pBullet && this->Get_Owner() != pBullet 
+		&& this->Get_TeamID() != pBullet->Get_TeamID())
 	{
 		pBullet->Set_Dead();
 	}

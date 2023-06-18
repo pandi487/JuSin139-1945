@@ -12,11 +12,11 @@ CReturnBullet::~CReturnBullet()
 
 void CReturnBullet::Initialize(void)
 {
-	m_tInfo.fCX = 15.f;
-	m_tInfo.fCY = 15.f;
+	m_tInfo.fCX = 10.f;
+	m_tInfo.fCY = 10.f;
 
 	m_fSpeed = 5.f;
-	m_fAcceleration = -0.02;
+	m_fAcceleration = -0.05f;
 }
 
 int CReturnBullet::Update(void)
@@ -24,10 +24,8 @@ int CReturnBullet::Update(void)
 	if (m_bDead)
 		return OBJ_DEAD;
 
-	while (m_fSpeed == 0) {
-		m_fSpeed += m_fAcceleration;
-	}
-	m_tInfo.fX = m_pTarget->Get_Info().fX;
+	m_fSpeed += m_fAcceleration;
+	m_tInfo.fX += m_fFollow_SpeedX;
 	m_tInfo.fY -= m_fSpeed;
 
 	__super::Update_Rect();

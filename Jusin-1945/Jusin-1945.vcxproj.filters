@@ -85,6 +85,18 @@
     <Filter Include="01. Obj\02. Projectile\01. Bullet\04. ReturnBullet">
       <UniqueIdentifier>{8e2bca8b-494d-4e7a-b712-d713f625ba63}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03. UI\02. Damage">
+      <UniqueIdentifier>{63b10a65-8815-46bd-a31b-fdebb212878e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Projectile\01. Bullet\04. Bomb">
+      <UniqueIdentifier>{1d40a798-4c7e-47ec-911a-5e7623e5b21b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Projectile\01. Bullet\05. SonicWave">
+      <UniqueIdentifier>{73ce5766-b1e2-4efa-b52b-6c711f27ef82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Projectile\01. Bullet\06. Napalm">
+      <UniqueIdentifier>{ed0590f6-9e64-4b07-85fd-06cf8e724224}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -168,6 +180,18 @@
     <ClInclude Include="Projectile\Bullet\ReturnBullet.h">
       <Filter>01. Obj\02. Projectile\01. Bullet\04. ReturnBullet</Filter>
     </ClInclude>
+    <ClInclude Include="General\Damage.h">
+      <Filter>03. UI\02. Damage</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile\Bullet\Bomb.h">
+      <Filter>01. Obj\02. Projectile\01. Bullet\04. Bomb</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile\Bullet\SonicWaveBullet.h">
+      <Filter>01. Obj\02. Projectile\01. Bullet\05. SonicWave</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile\Bullet\NapalmBullet.h">
+      <Filter>01. Obj\02. Projectile\01. Bullet\06. Napalm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -235,6 +259,18 @@
     </ClCompile>
     <ClCompile Include="Projectile\Bullet\MissileBullet.cpp">
       <Filter>01. Obj\02. Projectile\01. Bullet\03. MissileBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="General\Damage.cpp">
+      <Filter>03. UI\02. Damage</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Bullet\Bomb.cpp">
+      <Filter>01. Obj\02. Projectile\01. Bullet\04. Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Bullet\SonicWaveBullet.cpp">
+      <Filter>01. Obj\02. Projectile\01. Bullet\05. SonicWave</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Bullet\NapalmBullet.cpp">
+      <Filter>01. Obj\02. Projectile\01. Bullet\06. Napalm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

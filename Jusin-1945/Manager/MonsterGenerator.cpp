@@ -2,6 +2,7 @@
 #include "CMainGame.h"
 #include "MonsterGenerator.h"
 #include "AbstractFactory.h"
+#include "Unit/GameObject.h"
 #include "Monster/Monster.h"
 #include "Monster/Monster_TypeA.h"
 
@@ -28,13 +29,16 @@ int CMonsterGenerator::Update(void)
 	if (m_bDead)
 		return OBJ_DEAD;
 
-	__super::Update_Timers();
+    if (m_bStart_Create)
+    {
+        __super::Update_Timers();
 
-	// 생성 타이머
-	if (0 == m_dwTimers[CREATE])
-	{
-		Create_Monster(m_dwTimers[CREATE]);
-	}
+        // 생성 타이머
+        if (0 == m_dwTimers[CREATE])
+        {
+            Create_Monster(m_dwTimers[CREATE]);
+        }
+    }
 
 	return OBJ_NOEVENT;
 }
@@ -103,6 +107,9 @@ void CMonsterGenerator::Create_Monster(DWORD& _timer)
 			);
 		break;
 	}
+    CGameObject* pGameObj = dynamic_cast<CGameObject*>(m_MainGame_MonsterList->back());
+    pGameObj->Get_StatusInfo().fMaxHP = (float)pMonsterInfo->iHP;
+    pGameObj->Get_StatusInfo().fMaxHP = (float)pMonsterInfo->iHP;
 
 	// 생성된 것은 제외하기
 	m_MonsterCreateList.pop_front();

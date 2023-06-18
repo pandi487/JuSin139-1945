@@ -25,5 +25,10 @@ private:
 
 private:
 	list<CObj*>* m_pBullet;
+
+private:
+	int					m_iPrimaryWeapon_MaxDelay = 6;	// 0.1초
+	int					m_iPrimaryWeapon_Delay = 0;		// 주무기 발사 딜레이
+
 };
 

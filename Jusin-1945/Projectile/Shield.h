@@ -1,6 +1,8 @@
 #pragma once
 #include "CObj.h"
-class CShield : public CObj
+#include "Bullet/Bullet.h"
+
+class CShield : public CBullet
 {
 public:
 	CShield();

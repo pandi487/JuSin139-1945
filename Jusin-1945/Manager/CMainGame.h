@@ -9,6 +9,9 @@
 #include "Projectile/Bullet/NormalBullet.h"
 #include "Projectile/Bullet/GuidedBullet.h"
 #include "Projectile/Bullet/MissileBullet.h"
+#include "Projectile/Bullet/Bomb.h"
+#include "Projectile/Bullet/NapalmBullet.h"
+#include "Projectile/Bullet/SonicWaveBullet.h"
 
 #include "UI/Mouse.h"
 

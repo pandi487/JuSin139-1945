@@ -28,8 +28,8 @@ int CMiniAirplane::Update(void)
 
 	// 1초마다 총알 발사	
 	if (m_dwTime + 1000 < GetTickCount()) {
-		m_pBullet->push_back(Create_NormalBullet(-150.f, 0));
-		m_pBullet->push_back(Create_NormalBullet(150.f, 0));
+		m_pBullet->push_back(Create_NormalBullet(-50.f, 0));
+		m_pBullet->push_back(Create_NormalBullet(50.f, 0));
 		m_dwTime = GetTickCount();
 	}
 
@@ -45,15 +45,15 @@ void CMiniAirplane::Late_Update(void)
 void CMiniAirplane::Render(HDC hDC)
 {
 	Ellipse(hDC,
-		m_tRect.left - 150,
+		m_tRect.left - 50,
 		m_tRect.top,
-		m_tRect.right - 150,
+		m_tRect.right - 50,
 		m_tRect.bottom);
 
 	Ellipse(hDC,
-		m_tRect.left + 150,
+		m_tRect.left + 50,
 		m_tRect.top,
-		m_tRect.right + 150,
+		m_tRect.right + 50,
 		m_tRect.bottom);
 }
 

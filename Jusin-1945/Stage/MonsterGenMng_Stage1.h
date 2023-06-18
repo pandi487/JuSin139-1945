@@ -20,6 +20,11 @@ public:
     virtual void Collide(CObj& _rDst) override {}
 
 public:
-	void Test();
+	void Phase_1();
+    void Phase_2();
+    void Phase_3();
+    void Phase_4();
+    void Phase_5();
+    void Phase_Boss();
 };
 

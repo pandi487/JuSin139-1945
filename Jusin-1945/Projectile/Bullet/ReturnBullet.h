@@ -14,5 +14,11 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 	virtual void Collide(CObj& _rDst) override;
+
+private:
+	float m_fFollow_SpeedX = 0.f;
+	
+public:
+	void Set_Follow_Speed(float value) { m_fFollow_SpeedX = value; }
 };
 
