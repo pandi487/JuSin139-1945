@@ -19,14 +19,13 @@ public:
 	virtual void Collide(CObj& _rDst) override	PURE;
 
 public:
+	void Set_Bulletinfo(float _fRadian, float _Xpos, float _Ypos, float _size, float _speed);
 	void Set_Bulletinfo(float _fRadian, float _Xpos, float _Ypos);
 	void Set_Bulletinfo(float _Xpos, float _Ypos);
 
-protected:
-	
-
 public:
 	// 날아가는 방향
-    float m_fRadian;
+    float	m_fRadian;
+	float	m_fDamage;
 };
 

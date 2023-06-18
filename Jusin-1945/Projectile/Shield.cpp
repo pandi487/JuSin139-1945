@@ -1,4 +1,5 @@
 #include "Shield.h"
+#include "Manager/CMainGame.h"
 
 CShield::CShield() : m_iTime(0)
 {
@@ -11,8 +12,8 @@ CShield::~CShield()
 
 void CShield::Initialize(void)
 {
-	m_tInfo.fCX = 15.f;
-	m_tInfo.fCY = 15.f;
+	m_tInfo.fCX = 30.f;
+	m_tInfo.fCY = 30.f;
 
 	m_fSpeed = 5.f;
 	m_fDistance = 100.f;
@@ -71,5 +72,17 @@ void CShield::Release(void)
 
 void CShield::Collide(CObj& _rDst)
 {
-    
+	CGameObject* pGObj = dynamic_cast<CGameObject*>(&_rDst);
+	if (nullptr != pGObj && this->Get_Owner() != pGObj)
+	{
+		pGObj->Set_Dead();
+	}
+
+	CBullet* pBullet = dynamic_cast<CBullet*>(&_rDst);
+	if (nullptr != pBullet && this->Get_Owner() != pBullet)
+	{
+		pBullet->Set_Dead();
+	}
+
+
 }

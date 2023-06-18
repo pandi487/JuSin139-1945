@@ -10,6 +10,8 @@
 #include "Projectile/Bullet/GuidedBullet.h"
 #include "Projectile/Bullet/MissileBullet.h"
 
+#include "UI/Mouse.h"
+
 //#include "MonsterGenerateManager.h"
 
 #include "UI/Score.h"

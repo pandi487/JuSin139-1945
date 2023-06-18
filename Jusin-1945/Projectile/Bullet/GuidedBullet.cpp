@@ -1,5 +1,6 @@
 #include "GuidedBullet.h"
 #include "Manager/CMainGame.h"
+#include "Unit/Player.h"
 
 CGuidedBullet::CGuidedBullet()
 {
@@ -15,6 +16,7 @@ void CGuidedBullet::Initialize(void)
 	m_tInfo.fCY = 10.f;
 
 	m_fSpeed = 7.f;
+
 	m_TargetList = &CMainGame::Get_Instance().Get_ObjList()[BULLET];
 
 	if (m_TargetList != nullptr && !m_TargetList->empty()) {
@@ -96,7 +98,13 @@ void CGuidedBullet::Release(void)
 
 void CGuidedBullet::Collide(CObj& _rDst)
 {
-    
+    CGameObject* pGObj = dynamic_cast<CGameObject*>(&_rDst);
+	if (nullptr != pGObj && this->Get_Owner() != pGObj 
+		&& this->Get_TeamID() != pGObj->Get_TeamID())
+	{
+		pGObj->Set_Dead();
+		this->Set_Dead();
+	}
 }
 
 float CGuidedBullet::Distance(CObj* _obj)

@@ -79,6 +79,12 @@
     <Filter Include="02. Design\02. Mouse">
       <UniqueIdentifier>{ed5dcdb1-539f-4463-a6f9-112733b79585}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\01. Character\01. Monster\02. Type B">
+      <UniqueIdentifier>{1ef749df-66c7-4ca7-92dd-ff0adff12ff1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Projectile\01. Bullet\04. ReturnBullet">
+      <UniqueIdentifier>{8e2bca8b-494d-4e7a-b712-d713f625ba63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -156,6 +162,12 @@
     <ClInclude Include="UI\Mouse.h">
       <Filter>02. Design\02. Mouse</Filter>
     </ClInclude>
+    <ClInclude Include="Unit\Monster\Monster_TypeB.h">
+      <Filter>01. Obj\01. Character\01. Monster\02. Type B</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile\Bullet\ReturnBullet.h">
+      <Filter>01. Obj\02. Projectile\01. Bullet\04. ReturnBullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -212,11 +224,17 @@
     <ClCompile Include="Stage\MonsterGenMng_Stage1.cpp">
       <Filter>04. Stage</Filter>
     </ClCompile>
-    <ClCompile Include="Projectile\Bullet\MissileBullet.cpp">
-      <Filter>01. Obj\02. Projectile\01. Bullet\03. MissileBullet</Filter>
-    </ClCompile>
     <ClCompile Include="UI\Mouse.cpp">
       <Filter>02. Design\02. Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit\Monster\Monster_TypeB.cpp">
+      <Filter>01. Obj\01. Character\01. Monster\02. Type B</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Bullet\ReturnBullet.cpp">
+      <Filter>01. Obj\02. Projectile\01. Bullet\04. ReturnBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Bullet\MissileBullet.cpp">
+      <Filter>01. Obj\02. Projectile\01. Bullet\03. MissileBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

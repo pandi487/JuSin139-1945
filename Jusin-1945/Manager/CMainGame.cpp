@@ -35,6 +35,8 @@ void CMainGame::Initialize()
 	{
 		m_ObjList[MANAGER].push_back(CAbstractFactory<CMonsterGenMng_Stage1>::Create());
 	}
+
+	m_ObjList[MOUSE].push_back(CAbstractFactory<CMouse>::Create());
 }
 
 
@@ -60,6 +62,8 @@ void CMainGame::Late_Update()
 	CCollision::Collision_Sphere(m_ObjList[BULLET], m_ObjList[MONSTER]);
 	CCollision::Collision_Rect(m_ObjList[LASER], m_ObjList[MONSTER]);
 	CCollision::Collision_Sphere(m_ObjList[SHIELD], m_ObjList[MONSTER]);
+	CCollision::Collision_Sphere(m_ObjList[SHIELD], m_ObjList[BULLET]);
+
 
 	for (size_t i = 0; i < OBJID_END; ++i) {
 		for (auto& iter : m_ObjList[i])

@@ -1,4 +1,5 @@
 #include "NormalBullet.h"
+#include "Manager/CMainGame.h"
 
 CNormalBullet::CNormalBullet()
 {
@@ -67,5 +68,11 @@ void CNormalBullet::Release(void)
 
 void CNormalBullet::Collide(CObj& _rDst)
 {
-    
+    CGameObject* pGObj = dynamic_cast<CGameObject*>(&_rDst);
+	if (nullptr != pGObj && this->Get_Owner() != pGObj 
+		&& this->Get_TeamID() != pGObj->Get_TeamID())
+	{
+		pGObj->Set_Dead();
+		this->Set_Dead();
+	}
 }

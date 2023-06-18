@@ -1,5 +1,6 @@
 #include "Unit/MiniAirplane.h"
 #include "General/AbstractFactory.h"
+#include "Manager/CMainGame.h"
 
 CMiniAirplane::CMiniAirplane()
 {
@@ -16,6 +17,8 @@ void CMiniAirplane::Initialize(void)
 	m_tInfo.fCY = 40.f;
 
 	m_fSpeed = 5.f;
+
+	m_pBullet = &CMainGame::Get_Instance().Get_ObjList()[BULLET];
 }
 
 int CMiniAirplane::Update(void)
@@ -23,8 +26,8 @@ int CMiniAirplane::Update(void)
 	m_tInfo.fX = m_pTarget->Get_Info().fX;
 	m_tInfo.fY = m_pTarget->Get_Info().fY;
 
-	// 1초마다 총알 발사
-	if (m_dwTime + 1000 <= GetTickCount()) {
+	// 1초마다 총알 발사	
+	if (m_dwTime + 1000 < GetTickCount()) {
 		m_pBullet->push_back(Create_NormalBullet(-150.f, 0));
 		m_pBullet->push_back(Create_NormalBullet(150.f, 0));
 		m_dwTime = GetTickCount();
@@ -67,11 +70,10 @@ CObj* CMiniAirplane::Create_NormalBullet(float _fMuzzleX, float _fMuzzleY)
 {
 	float fRadian = PI / 2.f; // 위쪽으로 발사시키기위함
 
-	CObj* pNormalBullet = CAbstractFactory<CNormalBullet>::Create(m_tInfo.fX, m_tInfo.fY);
-	CNormalBullet* pTemp = dynamic_cast<CNormalBullet*>(pNormalBullet);
+	CNormalBullet* pCreated = dynamic_cast<CNormalBullet*>(
+								CAbstractFactory<CNormalBullet>::Create(m_tInfo.fX, m_tInfo.fY));
+	pCreated->Set_Owner(this);
+	pCreated->Set_Bulletinfo(fRadian, m_tInfo.fX + _fMuzzleX, m_tInfo.fY + _fMuzzleY);
 
-	pTemp->Set_Bulletinfo(fRadian, m_tInfo.fX - _fMuzzleX, m_tInfo.fY);
-	pNormalBullet->Initialize();
-
-	return pNormalBullet;
+	return pCreated;
 }

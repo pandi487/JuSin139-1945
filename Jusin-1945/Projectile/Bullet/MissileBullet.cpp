@@ -1,4 +1,5 @@
 #include "MissileBullet.h"
+#include "Manager/CMainGame.h"
 
 CMissileBullet::CMissileBullet()
 {
@@ -39,27 +40,11 @@ void CMissileBullet::Late_Update(void)
 
 void CMissileBullet::Render(HDC hDC)
 {
-	//HBRUSH  hBrush, oldBrush;
-	//HPEN	hPen, oldPen;
-
-	//hBrush = CreateSolidBrush(RGB(255, 255, 153));		// 색 입히는 코드
-	//oldBrush = (HBRUSH)SelectObject(hDC, hBrush);
-
-	//hPen = CreatePen(PS_SOLID, 2, RGB(255, 255, 153));
-	//oldPen = (HPEN)SelectObject(hDC, hPen);
-
 	Ellipse(hDC,
 		m_tRect.left,
 		m_tRect.top,
 		m_tRect.right,
 		m_tRect.bottom);
-
-	//SelectObject(hDC, oldBrush);
-	//DeleteObject(hBrush);
-
-	//SelectObject(hDC, oldPen);
-	//DeleteObject(hPen);
-
 }
 
 void CMissileBullet::Release(void)
@@ -68,5 +53,11 @@ void CMissileBullet::Release(void)
 
 void CMissileBullet::Collide(CObj& _rDst)
 {
-    
+    CGameObject* pGObj = dynamic_cast<CGameObject*>(&_rDst);
+	if (nullptr != pGObj && this->Get_Owner() != pGObj 
+		&& this->Get_TeamID() != pGObj->Get_TeamID())
+	{
+		pGObj->Set_Dead();
+		this->Set_Dead();
+	}
 }

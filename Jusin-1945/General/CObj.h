@@ -44,6 +44,11 @@ protected:
 	bool	m_bDead;
 
 	vector<DWORD>	m_dwTimers;
+
+	// 주인놈
+	CObj*	m_pOwner = nullptr;
+
+	int 	m_iTeam;
 	
 	float	m_fSpeed;			// 속도
 	float	m_fAcceleration;	// 가속도
@@ -51,7 +56,13 @@ protected:
 	float	m_fAngle;			// 각도
 
 protected:
-	DWORD	m_dwTime;			// 시간
+	DWORD	m_dwTime = 0;			// 시간
 
+public:
+	void Set_Owner(CObj* value) { m_pOwner = value; }
+	CObj* Get_Owner() { return m_pOwner; }
+
+	void Set_Team(int value) { m_iTeam = value; }
+	int Get_TeamID() { return m_iTeam; }
 };
 

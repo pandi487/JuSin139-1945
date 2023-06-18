@@ -15,7 +15,7 @@ public:
 
 	bool		m_isOnField;		//필드 안 확인
 	float		m_fRadian;		
-	
+	float		m_fMove_Radian;
 	bool		m_dead = false;
 
 	DWORD		m_dwTime = GetTickCount64();

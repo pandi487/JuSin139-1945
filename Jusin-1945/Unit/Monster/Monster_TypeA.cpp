@@ -19,10 +19,10 @@ int CMonster_TypeA::Update(void)
 	if (m_bDead)
 		return OBJ_DEAD;
 
-	m_fRadian = m_fAngle * (PI / 180);
+	m_fMove_Radian = m_fAngle * (PI / 180);
 
-	m_tInfo.fX += cos(m_fRadian) * m_fSpeed;
-	m_tInfo.fY -= sin(m_fRadian) * m_fSpeed;
+	m_tInfo.fX += cos(m_fMove_Radian) * m_fSpeed;
+	m_tInfo.fY -= sin(m_fMove_Radian) * m_fSpeed;
 
 	if (m_isOnField) {
 		TimeLimit();
@@ -66,6 +66,7 @@ void CMonster_TypeA::Release(void)
 
 void CMonster_TypeA::Collide(CObj& _rDst)
 {
+	
 }
 
 void CMonster_TypeA::TimeLimit(void)
@@ -79,11 +80,10 @@ void CMonster_TypeA::TimeLimit(void)
 
 CObj* CMonster_TypeA::Create_Bullet(float _fRadian, float _fMuzzleX, float _fMuzzleY)
 {
-	CObj* pNormalBullet = CAbstractFactory<CNormalBullet>::Create();
-	CNormalBullet* pTemp = dynamic_cast<CNormalBullet*>(pNormalBullet);
-	
-	pTemp->Set_Bulletinfo(_fRadian, _fMuzzleX, _fMuzzleY);
-	pNormalBullet->Initialize();
+	CNormalBullet* pCreated = dynamic_cast<CNormalBullet*>(
+								CAbstractFactory<CNormalBullet>::Create());
+	pCreated->Set_Owner(this);
+	pCreated->Set_Bulletinfo(_fRadian, _fMuzzleX, _fMuzzleY);
 
-	return pNormalBullet;
+	return pCreated;
 }

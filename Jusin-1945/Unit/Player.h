@@ -5,6 +5,7 @@
 #include "Projectile/Bullet/NormalBullet.h"
 #include "Projectile/Bullet/GuidedBullet.h"
 #include "Projectile/Bullet/MissileBullet.h"
+#include "Projectile/Bullet/ReturnBullet.h"
 
 #include "Projectile/Shield.h"
 #include "Projectile/Laser.h"
@@ -43,6 +44,7 @@ private:
 	CObj*		Create_NormalBullet(float _fMuzzleX, float _fMuzzleY);	 // -y방향으로만 나가는 총알 발사
 	CObj*		Create_GuidedBullet(float _fMuzzleX, float _fMuzzleY);	 // 유도 총알 발사
 	CObj*		Create_MissileBullet(float _fMuzzleX, float _fMuzzleY);  // 미사일 발사
+	CObj*		Create_ReturnBullet(float _fMuzzleX, float _fMuzzleY);	 // 중간에 떨어지는 총알
 	
 	CObj*		Create_Shield();
 	CObj*		Create_Laser();
