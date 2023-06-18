@@ -23,11 +23,12 @@ public:
 	void	Set_Angle(float _fAngle) { m_fAngle = _fAngle; }
 
 public:
-	virtual void	Initialize(void)	PURE;
-	virtual int		Update(void)		PURE;
-	virtual void 	Late_Update(void)	PURE;
-	virtual void	Render(HDC hDC)		PURE;
-	virtual void	Release(void)		PURE;
+	virtual void	Initialize(void)			PURE;
+	virtual int		Update(void)				PURE;
+	virtual void 	Late_Update(void)			PURE;
+	virtual void	Render(HDC hDC)				PURE;
+	virtual void	Release(void)				PURE;
+	virtual void 	Collide(CObj& _rDst)	 	PURE;
 
 protected:
 	void	Update_Rect();

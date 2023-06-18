@@ -59,5 +59,6 @@ private:
 
 public:
 	list<CObj*>* Get_ObjList() { return m_ObjList; }
+	CObj* Get_ObjFront(int _OBJID) { return m_ObjList[_OBJID].front(); }
 };
 

@@ -1,41 +1,43 @@
-#include "NormalBullet.h"
+#include "MissileBullet.h"
 
-CNormalBullet::CNormalBullet()
+CMissileBullet::CMissileBullet()
 {
-
 }
 
-CNormalBullet::~CNormalBullet()
+CMissileBullet::~CMissileBullet()
 {
 	Release();
 }
 
-void CNormalBullet::Initialize(void)
+void CMissileBullet::Initialize(void)
 {
-	m_tInfo.fCX = 20.f;
-	m_tInfo.fCY = 20.f;
+	m_tInfo.fCX = 10.f;
+	m_tInfo.fCY = 10.f;
 
 	m_fSpeed = 5.f;
+	m_fAcceleration = 0.25;
 }
 
-int CNormalBullet::Update(void)
+int CMissileBullet::Update(void)
 {
 	if (m_bDead)
 		return OBJ_DEAD;
 
-	m_tInfo.fX += (m_fSpeed * (cos(m_fRadian)));
-	m_tInfo.fY -= (m_fSpeed * (sin(m_fRadian)));
+	m_fSpeed += m_fAcceleration;
+
+	m_tInfo.fX = m_pTarget->Get_Info().fX;
+	m_tInfo.fY -= m_fSpeed;
 
 	__super::Update_Rect();
 
 	return OBJ_NOEVENT;
 }
 
-void CNormalBullet::Late_Update(void)
+void CMissileBullet::Late_Update(void)
 {
 }
 
-void CNormalBullet::Render(HDC hDC)
+void CMissileBullet::Render(HDC hDC)
 {
 	HBRUSH  hBrush, oldBrush;
 	HPEN	hPen, oldPen;
@@ -60,7 +62,6 @@ void CNormalBullet::Render(HDC hDC)
 
 }
 
-void CNormalBullet::Release(void)
+void CMissileBullet::Release(void)
 {
-
 }

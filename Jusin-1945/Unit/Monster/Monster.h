@@ -29,11 +29,11 @@ public:
 	
 
 public:
-	virtual void Initialize(void)	PURE;
-	virtual int  Update(void)		PURE;
-	virtual void Late_Update(void)	PURE;
-	virtual void Render(HDC hDC)	PURE;
-	virtual void Release(void)		PURE;
-
+	virtual void Initialize(void) override		PURE;
+	virtual int  Update(void) override			PURE;
+	virtual void Late_Update(void) override		PURE;
+	virtual void Render(HDC hDC) override		PURE;
+	virtual void Release(void) override			PURE;
+	virtual void Collide(CObj& _rDst) override 	PURE;
 };
 

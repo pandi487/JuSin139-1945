@@ -142,12 +142,14 @@
     <ClInclude Include="Manager\MonsterGenerator.h" />
     <ClInclude Include="Projectile\Bullet\Bullet.h" />
     <ClInclude Include="Projectile\Bullet\GuidedBullet.h" />
+    <ClInclude Include="Projectile\Bullet\MissileBullet.h" />
     <ClInclude Include="Projectile\Bullet\NormalBullet.h" />
     <ClInclude Include="Projectile\Laser.h" />
     <ClInclude Include="Projectile\Shield.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Stage\MonsterGenMng_Stage1.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="UI\Mouse.h" />
     <ClInclude Include="UI\Score.h" />
     <ClInclude Include="Unit\GameObject.h" />
     <ClInclude Include="Unit\MiniAirplane.h" />
@@ -162,8 +164,10 @@
     <ClCompile Include="Manager\CMainGame.cpp" />
     <ClCompile Include="Manager\MonsterGenerateManager.cpp" />
     <ClCompile Include="Manager\MonsterGenerator.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Projectile\Bullet\Bullet.cpp" />
     <ClCompile Include="Projectile\Bullet\GuidedBullet.cpp" />
+    <ClCompile Include="Projectile\Bullet\MissileBullet.cpp" />
     <ClCompile Include="Projectile\Bullet\NormalBullet.cpp" />
     <ClCompile Include="Projectile\Laser.cpp" />
     <ClCompile Include="Projectile\Shield.cpp" />

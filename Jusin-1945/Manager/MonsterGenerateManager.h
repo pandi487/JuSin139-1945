@@ -12,7 +12,7 @@
 class CMonsterGenerateManager abstract : public CObj
 {
 public:
-	enum { };
+	//enum { };
 public:
 	CMonsterGenerateManager();
 	virtual ~CMonsterGenerateManager();

@@ -20,6 +20,7 @@ void CMonsterGenerator::Initialize(void)
 		timer = 1;
 
 	m_MainGame_MonsterList = &CMainGame::Get_Instance().Get_ObjList()[MONSTER];
+    CMainGame::Get_Instance().Get_ObjList()[GENERATOR].push_back(this);
 }
 
 int CMonsterGenerator::Update(void)

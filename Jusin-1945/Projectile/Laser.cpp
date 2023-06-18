@@ -44,7 +44,22 @@ void CLaser::Late_Update(void)
 
 void CLaser::Render(HDC hDC)
 {
+    HBRUSH  hBrush, oldBrush;
+    HPEN	hPen, oldPen;
+
+    hBrush = CreateSolidBrush(RGB(255, 255, 102));		// 색 입히는 코드
+    oldBrush = (HBRUSH)SelectObject(hDC, hBrush);
+
+    hPen = CreatePen(PS_SOLID, 2, RGB(255, 255, 102));
+    oldPen = (HPEN)SelectObject(hDC, hPen);
+
     Rectangle(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
+
+    SelectObject(hDC, oldBrush);
+    DeleteObject(hBrush);
+
+    SelectObject(hDC, oldPen);
+    DeleteObject(hPen);
 }
 
 void CLaser::Release(void)

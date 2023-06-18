@@ -17,6 +17,7 @@ public:
 	virtual void Late_Update(void) override;
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
+	virtual void Collide(CObj& _rDst) override;
 
 public:
 	

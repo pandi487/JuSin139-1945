@@ -85,6 +85,10 @@ void CPlayer::Key_Input(void)
 		m_pBullet->push_back(Create_GuidedBullet(-70.f , 10.f));
 	}
 
+	if (GetAsyncKeyState('M')) {
+		m_pBullet->push_back((Create_MissileBullet(0.f, 0.f)));
+	}
+
 	// 실드 생성
 	if (GetAsyncKeyState('S') && m_icount == 0)
 		m_icount = 4;
@@ -158,6 +162,18 @@ CObj* CPlayer::Create_GuidedBullet(float _fMuzzleX, float _fMuzzleY)
 	pGuidedBullet->Initialize();
 
 	return pGuidedBullet;
+}
+
+CObj* CPlayer::Create_MissileBullet(float _fMuzzleX, float _fMuzzleY)
+{
+	CObj* pMissileBullet = CAbstractFactory<CMissileBullet>::Create(m_tInfo.fX, m_tInfo.fY);
+	CMissileBullet* pTemp = dynamic_cast<CMissileBullet*>(pMissileBullet);
+
+	pTemp->Set_Bulletinfo(m_tInfo.fX - _fMuzzleX, m_tInfo.fY - _fMuzzleY);
+	pMissileBullet->Initialize();
+	pTemp->Set_Target(this);
+
+	return pMissileBullet;
 }
 
 void CPlayer::Draw_Body(HDC hDC){

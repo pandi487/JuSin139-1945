@@ -4,6 +4,7 @@
 #include "Projectile/Bullet/Bullet.h"
 #include "Projectile/Bullet/NormalBullet.h"
 #include "Projectile/Bullet/GuidedBullet.h"
+#include "Projectile/Bullet/MissileBullet.h"
 
 #include "Projectile/Shield.h"
 #include "Projectile/Laser.h"
@@ -27,11 +28,12 @@ public:
 	void		Set_Mini(list<CObj*>* pMini) { m_pMini = pMini; }
 
 public:
-	virtual void Initialize(void)	override;
-	virtual int  Update(void)		override;
-	virtual void Late_Update(void)	override;
-	virtual void Render(HDC hDC)	override;
-	virtual void Release(void)		override;
+	virtual void Initialize(void)		override;
+	virtual int  Update(void)			override;
+	virtual void Late_Update(void)		override;
+	virtual void Render(HDC hDC)		override;
+	virtual void Release(void)			override;
+	virtual void Collide(CObj& _rDst) 	override;
 
 private:
 	void		Draw_Body(HDC hDC);
@@ -40,6 +42,7 @@ private:
 private:
 	CObj*		Create_NormalBullet(float _fMuzzleX, float _fMuzzleY); // -y방향으로만 나가는 총알 발사
 	CObj*		Create_GuidedBullet(float _fMuzzleX, float _fMuzzleY); // 유도 총알 발사
+	CObj*		Create_MissileBullet(float _fMuzzleX, float _fMuzzleY); // 미사일 발사
 	
 	CObj*		Create_Shield();
 	CObj*		Create_Laser();

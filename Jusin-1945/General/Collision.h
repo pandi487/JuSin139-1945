@@ -1,6 +1,6 @@
 #pragma once
 #include "CObj.h"
-class CCollision : public CObj
+class CCollision
 {
 public:
 	CCollision();

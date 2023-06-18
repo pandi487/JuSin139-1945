@@ -11,11 +11,12 @@ public:
 
 public:
 	// CObj을(를) 통해 상속됨
-	virtual void Initialize(void) {};
-	virtual int  Update(void) { return 0; };
-	virtual void Late_Update(void) {};
-	virtual void Render(HDC hDC) {};
-	virtual void Release(void) {};
+	virtual void Initialize(void) override		PURE;
+	virtual int  Update(void) override			PURE;
+	virtual void Late_Update(void) override		PURE;
+	virtual void Render(HDC hDC) override		PURE;
+	virtual void Release(void) override 		PURE;
+	virtual void Collide(CObj& _rDst) override	PURE;
 
 public:
 	void Set_Bulletinfo(float _fRadian, float _Xpos, float _Ypos);

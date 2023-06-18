@@ -73,6 +73,12 @@
     <Filter Include="04. Stage">
       <UniqueIdentifier>{a317903e-caf6-4f19-a2f6-48ad5f4df072}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\02. Projectile\01. Bullet\03. MissileBullet">
+      <UniqueIdentifier>{7fe9af1a-5c8f-49ea-bfa7-18a3b1dbac9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Design\02. Mouse">
+      <UniqueIdentifier>{ed5dcdb1-539f-4463-a6f9-112733b79585}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -144,6 +150,12 @@
     <ClInclude Include="Stage\MonsterGenMng_Stage1.h">
       <Filter>04. Stage</Filter>
     </ClInclude>
+    <ClInclude Include="Projectile\Bullet\MissileBullet.h">
+      <Filter>01. Obj\02. Projectile\01. Bullet\03. MissileBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Mouse.h">
+      <Filter>02. Design\02. Mouse</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -199,6 +211,12 @@
     </ClCompile>
     <ClCompile Include="Stage\MonsterGenMng_Stage1.cpp">
       <Filter>04. Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile\Bullet\MissileBullet.cpp">
+      <Filter>01. Obj\02. Projectile\01. Bullet\03. MissileBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>02. Design\02. Mouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
