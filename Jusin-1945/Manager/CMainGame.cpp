@@ -95,12 +95,6 @@ void CMainGame::Render()
 	// 게임 이름
 	wsprintf(m_szName, L"139기 1차 팀과제");
 	TextOut(m_hDC, 430, 40, m_szName, lstrlen(m_szName));
-
-	// 캐릭터 스킬
-	TCHAR m_szSkill[200] = L"";
-	wsprintf(m_szSkill, L"Space바 : 일반공격 	Z : 중간에 떨어지는 총알");
-	TextOut(m_hDC, 50, 600, m_szSkill, lstrlen(m_szSkill));
-
 	
 }
 
