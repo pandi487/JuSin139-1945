@@ -57,6 +57,9 @@ void CLaser::Collide(CObj& _rDst)
     CGameObject* pGObj = dynamic_cast<CGameObject*>(&_rDst);
 	if (nullptr != pGObj && this->Get_Owner() != pGObj)
 	{
-		pGObj->Set_Dead();
-	}
+        if (pGObj->Get_StatusInfo().fHP > 0)
+            pGObj->Get_StatusInfo().fHP -= 20;
+        else if (pGObj->Get_StatusInfo().fHP <= 0)
+            pGObj->Set_Dead();
+    }
 }

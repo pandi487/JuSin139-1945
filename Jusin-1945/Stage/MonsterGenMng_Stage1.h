@@ -22,9 +22,8 @@ public:
 public:
 	void Phase_1();
     void Phase_2();
-    void Phase_3();
-    void Phase_4();
-    void Phase_5();
-    void Phase_Boss();
+    void Phase_BossA();
+    void Phase_BossB();
+    void Phase_BossC();
 };
 

@@ -39,7 +39,7 @@ private:
 
 public:
 	enum TIMER_FOR { CREATE, TIMER_END };
-	enum MONSTER_TYPE { NORMAL, SPEED, BOSS, MONSTER_TYPE_END };
+	enum MONSTER_TYPE { NORMAL, SPEED, BOSS_A, BOSS_B, BOSS_C, MONSTER_TYPE_END };
 	// INSTANT	: 적을 모두 소환하면 삭제 됨.
 	// WAVE		: 모든 적이 죽어야 삭제 됨.
 	enum GENERATOR_TYPE	{ INSTANT, WAVE, GENERATOR_TYPE_END };

@@ -15,7 +15,7 @@
 
 #include "UI/Mouse.h"
 
-//#include "MonsterGenerateManager.h"
+#include "MonsterGenerateManager.h"
 
 #include "UI/Score.h"
 
@@ -54,8 +54,8 @@ private:
 
 	list<CObj*> m_ObjList[OBJID_END];
 
-	TCHAR	m_szScore[32];
 	TCHAR	m_szTime[32];
+	TCHAR	m_szName[32];
 
 private:
 	DWORD	m_dwTime;

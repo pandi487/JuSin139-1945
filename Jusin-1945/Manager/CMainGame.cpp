@@ -8,8 +8,8 @@ CMainGame CMainGame::g_pInstance;
 
 CMainGame::CMainGame() : m_iTime(0)
 {
-	ZeroMemory(m_szScore, sizeof(m_szScore));
 	ZeroMemory(m_szTime, sizeof(m_szTime));
+	ZeroMemory(m_szName, sizeof(m_szName));
 }
 
 CMainGame::~CMainGame()
@@ -61,6 +61,7 @@ void CMainGame::Late_Update()
 	// 충돌처리
 	CCollision::Collision_Sphere(m_ObjList[BULLET], m_ObjList[PLAYER]);
 	CCollision::Collision_Sphere(m_ObjList[BULLET], m_ObjList[MONSTER]);
+	CCollision::Collision_Sphere(m_ObjList[BULLET], m_ObjList[MINIAIRPLANE]);
 	CCollision::Collision_Rect(m_ObjList[LASER], m_ObjList[BULLET]);
 	CCollision::Collision_Rect(m_ObjList[LASER], m_ObjList[MONSTER]);
 	CCollision::Collision_Sphere(m_ObjList[SHIELD], m_ObjList[MONSTER]);
@@ -87,12 +88,20 @@ void CMainGame::Render()
 			iter->Render(m_hDC);
 	}
 
+	// 시간 출력
 	wsprintf(m_szTime, L"Time : %d", m_iTime);
 	TextOut(m_hDC, 50, 40, m_szTime, lstrlen(m_szTime));
 
-	// 점수출력
-	wsprintf(m_szScore, L"Score : %d", m_ObjList[SCORE].size());
-	TextOut(m_hDC, 50, 60, m_szScore, lstrlen(m_szScore));
+	// 게임 이름
+	wsprintf(m_szName, L"139기 1차 팀과제");
+	TextOut(m_hDC, 430, 40, m_szName, lstrlen(m_szName));
+
+	// 캐릭터 스킬
+	TCHAR m_szSkill[200] = L"";
+	wsprintf(m_szSkill, L"Space바 : 일반공격 	Z : 중간에 떨어지는 총알");
+	TextOut(m_hDC, 50, 600, m_szSkill, lstrlen(m_szSkill));
+
+	
 }
 
 void CMainGame::Release()

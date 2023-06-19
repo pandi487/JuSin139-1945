@@ -2,11 +2,11 @@
 #include "Unit/Monster/Monster.h"
 
 
-class CBoss_A : public CMonster
+class CBoss_C : public CMonster
 {
 public:
-	CBoss_A() {};
-	~CBoss_A() {};
+	CBoss_C() {};
+	~CBoss_C() {};
 
 	bool m_bArrive = false;
 
@@ -23,6 +23,6 @@ public:
 	virtual void TimeLimit(void)	override;
 
 	CObj* Create_NormalBullet(float _fRadian, float _fMuzzleX, float _fMuzzleY);
-
+	CObj* Create_GuidedBullet(float _fRadian, float _fMuzzleX, float _fMuzzleY);
 };
 

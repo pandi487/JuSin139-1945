@@ -1,6 +1,8 @@
 #pragma once
 
 #include "GameObject.h"
+#include "Manager/CMainGame.h"
+
 #include "Projectile/Bullet/Bullet.h"
 #include "Projectile/Bullet/NormalBullet.h"
 #include "Projectile/Bullet/GuidedBullet.h"
@@ -44,6 +46,9 @@ private:
 	void		Key_Input(void);
 
 private:
+	TCHAR		m_szHp[32];
+
+private:
 	CObj*		Create_NormalBullet		(float _fMuzzleX, float _fMuzzleY);		// -y방향으로만 나가는 총알 발사
 	CObj*		Create_GuidedBullet		(float _fMuzzleX, float _fMuzzleY);		// 유도 총알 발사
 	CObj*		Create_MissileBullet	(float _fMuzzleX, float _fMuzzleY);		// 미사일 발사
@@ -64,9 +69,10 @@ private:
 	list<CObj*>*		m_pMini;
 
 private:
-	int 				m_icount = 0;					// 실드 원 개수
 	int					m_iPrimaryWeapon_MaxDelay = 6;	// 0.1초
 	int					m_iPrimaryWeapon_Delay = 0;		// 주무기 발사 딜레이
+
+	int 				m_icount = 0;					// 실드 원 개수
 	int 				m_iSonicWaveCount = 0; 			//음파 개수
 	int 				m_iNapalm_Bomb_Count = 0; 		//네이팜탄 개수
 };

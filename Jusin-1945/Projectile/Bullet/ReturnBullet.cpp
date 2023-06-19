@@ -56,7 +56,11 @@ void CReturnBullet::Collide(CObj& _rDst)
 	if (nullptr != pGObj && this->Get_Owner() != pGObj 
 		&& this->Get_TeamID() != pGObj->Get_TeamID())
 	{
-		pGObj->Set_Dead();
+		if (pGObj->Get_StatusInfo().fHP > 0)
+			pGObj->Get_StatusInfo().fHP -= 5;
+		else if (pGObj->Get_StatusInfo().fHP == 0)
+			pGObj->Set_Dead();
+
 		this->Set_Dead();
 	}
 }

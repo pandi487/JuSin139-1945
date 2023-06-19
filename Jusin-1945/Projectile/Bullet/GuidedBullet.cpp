@@ -17,7 +17,7 @@ void CGuidedBullet::Initialize(void)
 
 	m_fSpeed = 7.f;
 
-	m_TargetList = &CMainGame::Get_Instance().Get_ObjList()[BULLET];
+	m_TargetList = &CMainGame::Get_Instance().Get_ObjList()[MONSTER];
 
 	if (m_TargetList != nullptr && !m_TargetList->empty()) {
 		TargetChoice(m_TargetList);
@@ -102,9 +102,38 @@ void CGuidedBullet::Collide(CObj& _rDst)
 	if (nullptr != pGObj && this->Get_Owner() != pGObj 
 		&& this->Get_TeamID() != pGObj->Get_TeamID())
 	{
-		pGObj->Set_Dead();
+		if (pGObj->Get_StatusInfo().fHP > 0)
+			pGObj->Get_StatusInfo().fHP -= 5;
+		else if (pGObj->Get_StatusInfo().fHP <= 0)
+			pGObj->Set_Dead();
+
 		this->Set_Dead();
 	}
+
+	CPlayer* pPlayer = dynamic_cast<CPlayer*>(&_rDst);
+	if (nullptr != pPlayer && this->Get_Owner() != pPlayer
+		&& this->Get_TeamID() != pPlayer->Get_TeamID())
+	{
+		if (pPlayer->Get_StatusInfo().fHP > 0)
+			pPlayer->Get_StatusInfo().fHP -= 5;
+		else if (pPlayer->Get_StatusInfo().fHP <= 0)
+			pPlayer->Set_Dead();
+
+		this->Set_Dead();
+	}
+
+	CMiniAirplane* pMini = dynamic_cast<CMiniAirplane*>(&_rDst);
+	if (nullptr != pMini && this->Get_Owner() != pMini
+		&& this->Get_TeamID() != pMini->Get_TeamID())
+	{
+		if (pMini->Get_StatusInfo().fHP > 0)
+			pMini->Get_StatusInfo().fHP -= 5;
+		else if (pMini->Get_StatusInfo().fHP <= 0)
+			pMini->Set_Dead();
+
+		this->Set_Dead();
+	}
+
 }
 
 float CGuidedBullet::Distance(CObj* _obj)

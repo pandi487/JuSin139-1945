@@ -1,8 +1,10 @@
 #include "Player.h"
 #include "AbstractFactory.h"
 
-CPlayer::CPlayer() : m_pBullet(nullptr)
+CPlayer::CPlayer() 
+	: m_pBullet(nullptr), m_pLaser(nullptr), m_pMini(nullptr), m_pTarget(nullptr), m_pShield(nullptr)
 {
+	ZeroMemory(m_szHp, sizeof(m_szHp));
 }
 
 CPlayer::~CPlayer()
@@ -14,13 +16,16 @@ void CPlayer::Initialize(void)
 {
 	m_tInfo = { 400.f, 500.f, 40.f, 40.f };
 	m_fSpeed = 5.f;
-	
+
+	m_StatusInfo = { 100.f, 100.f, false };
+
 	m_iTeam = 1;
 }
 
 int CPlayer::Update(void)
 {
 	Key_Input();
+
 
 	// 정규화용 역길이 변수
 	float normalLen = 0.f;
@@ -35,8 +40,6 @@ int CPlayer::Update(void)
 	// 정규화된 벡터로 동일한 속도로 이동
 	m_tInfo.fX += m_tInfo.fDirX * normalLen * m_fSpeed;
 	m_tInfo.fY += m_tInfo.fDirY * normalLen * m_fSpeed;
-
-
 
 	// 주무기 딜레이값 변화
 	if (m_iPrimaryWeapon_MaxDelay < ++m_iPrimaryWeapon_Delay)
@@ -54,6 +57,7 @@ void CPlayer::Late_Update(void)
 void CPlayer::Render(HDC hDC)
 {
 	Draw_Body(hDC); // 너무 드러워서 아래로 보냈어요
+
 }
 
 void CPlayer::Release(void)
@@ -99,11 +103,9 @@ void CPlayer::Key_Input(void)
 	if (GetAsyncKeyState(VK_SPACE)
 		&& m_iPrimaryWeapon_MaxDelay <= m_iPrimaryWeapon_Delay)
 	{
-		m_pBullet->push_back(Create_NormalBullet(0.f, -60.f));
-		m_pBullet->push_back(Create_NormalBullet(40.f, 25.f));
-		m_pBullet->push_back(Create_NormalBullet(-40.f, 25.f));
-		m_pBullet->push_back(Create_GuidedBullet(70.f, -10.f));
-		m_pBullet->push_back(Create_GuidedBullet(-70.f, -10.f));
+		m_pBullet->push_back(Create_NormalBullet(-15.f, -5.f));
+		m_pBullet->push_back(Create_NormalBullet(15.f, -5.f));
+		m_pBullet->push_back(Create_GuidedBullet(0.f, -60.f));
 
 		m_iPrimaryWeapon_Delay = 0;
 	}

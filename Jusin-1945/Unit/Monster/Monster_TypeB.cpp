@@ -8,6 +8,8 @@ void CMonster_TypeB::Initialize(void)
 	__super::Initialize();
 
 	m_tInfo = { 400.f, 500.f, 20.f, 20.f };
+	m_StatusInfo = { 3.f, 3.f, false };
+
 	m_fSpeed = 2.f;
 	m_spinspeed = 300.f;
 	m_isOnField = false;
@@ -52,6 +54,9 @@ int CMonster_TypeB::Update(void)
 
 void CMonster_TypeB::Late_Update(void)
 {
+	if ( WINCY + 125 < m_tInfo.fY)
+		m_bDead = true;
+
 	float fDistX = m_pTarget->Get_Info().fX - m_tInfo.fX;
 	float fDistY = m_pTarget->Get_Info().fY - m_tInfo.fY;
 

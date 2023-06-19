@@ -88,17 +88,23 @@
     <Filter Include="03. UI\02. Damage">
       <UniqueIdentifier>{63b10a65-8815-46bd-a31b-fdebb212878e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\02. Projectile\01. Bullet\04. Bomb">
+    <Filter Include="01. Obj\02. Projectile\01. Bullet\05. Bomb">
       <UniqueIdentifier>{1d40a798-4c7e-47ec-911a-5e7623e5b21b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\02. Projectile\01. Bullet\05. SonicWave">
+    <Filter Include="01. Obj\02. Projectile\01. Bullet\06. SonicWave">
       <UniqueIdentifier>{73ce5766-b1e2-4efa-b52b-6c711f27ef82}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\02. Projectile\01. Bullet\06. Napalm">
+    <Filter Include="01. Obj\02. Projectile\01. Bullet\07. Napalm">
       <UniqueIdentifier>{ed0590f6-9e64-4b07-85fd-06cf8e724224}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Obj\01. Character\01. Monster\03. Boss">
+    <Filter Include="01. Obj\01. Character\01. Monster\03. Boss A">
       <UniqueIdentifier>{ed50c43d-b3f9-4c87-b177-593101ea88be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Character\01. Monster\04. Boss B">
+      <UniqueIdentifier>{7c3a3551-38b3-41a4-9ead-d26cb83954b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Character\01. Monster\05. Boss C">
+      <UniqueIdentifier>{7fae5068-5070-49ea-a613-5631dfc339e0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -187,16 +193,22 @@
       <Filter>03. UI\02. Damage</Filter>
     </ClInclude>
     <ClInclude Include="Projectile\Bullet\Bomb.h">
-      <Filter>01. Obj\02. Projectile\01. Bullet\04. Bomb</Filter>
+      <Filter>01. Obj\02. Projectile\01. Bullet\05. Bomb</Filter>
     </ClInclude>
     <ClInclude Include="Projectile\Bullet\SonicWaveBullet.h">
-      <Filter>01. Obj\02. Projectile\01. Bullet\05. SonicWave</Filter>
+      <Filter>01. Obj\02. Projectile\01. Bullet\06. SonicWave</Filter>
     </ClInclude>
     <ClInclude Include="Projectile\Bullet\NapalmBullet.h">
-      <Filter>01. Obj\02. Projectile\01. Bullet\06. Napalm</Filter>
+      <Filter>01. Obj\02. Projectile\01. Bullet\07. Napalm</Filter>
     </ClInclude>
     <ClInclude Include="Unit\Monster\Boss_A.h">
-      <Filter>01. Obj\01. Character\01. Monster\03. Boss</Filter>
+      <Filter>01. Obj\01. Character\01. Monster\03. Boss A</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit\Monster\Boss_B.h">
+      <Filter>01. Obj\01. Character\01. Monster\04. Boss B</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit\Monster\Boss_C.h">
+      <Filter>01. Obj\01. Character\01. Monster\05. Boss C</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -270,16 +282,22 @@
       <Filter>03. UI\02. Damage</Filter>
     </ClCompile>
     <ClCompile Include="Projectile\Bullet\Bomb.cpp">
-      <Filter>01. Obj\02. Projectile\01. Bullet\04. Bomb</Filter>
+      <Filter>01. Obj\02. Projectile\01. Bullet\05. Bomb</Filter>
     </ClCompile>
     <ClCompile Include="Projectile\Bullet\SonicWaveBullet.cpp">
-      <Filter>01. Obj\02. Projectile\01. Bullet\05. SonicWave</Filter>
+      <Filter>01. Obj\02. Projectile\01. Bullet\06. SonicWave</Filter>
     </ClCompile>
     <ClCompile Include="Projectile\Bullet\NapalmBullet.cpp">
-      <Filter>01. Obj\02. Projectile\01. Bullet\06. Napalm</Filter>
+      <Filter>01. Obj\02. Projectile\01. Bullet\07. Napalm</Filter>
     </ClCompile>
     <ClCompile Include="Unit\Monster\Boss_A.cpp">
-      <Filter>01. Obj\01. Character\01. Monster\03. Boss</Filter>
+      <Filter>01. Obj\01. Character\01. Monster\03. Boss A</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit\Monster\Boss_B.cpp">
+      <Filter>01. Obj\01. Character\01. Monster\04. Boss B</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit\Monster\Boss_C.cpp">
+      <Filter>01. Obj\01. Character\01. Monster\05. Boss C</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

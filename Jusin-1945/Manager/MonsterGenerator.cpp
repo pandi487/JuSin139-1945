@@ -7,6 +7,8 @@
 #include "Monster/Monster_TypeA.h"
 #include "Monster/Monster_TypeB.h"
 #include "Monster/Boss_A.h"
+#include "Monster/Boss_B.h"
+#include "Monster/Boss_C.h"
 
 CMonsterGenerator::CMonsterGenerator()
 {
@@ -106,11 +108,22 @@ void CMonsterGenerator::Create_Monster(DWORD& _timer)
 			CAbstractFactory<CMonster_TypeB>::Create(pMonsterInfo->ptPosition.x, pMonsterInfo->ptPosition.y)
 			);
 		break;
-	case BOSS:
+	case BOSS_A:
 		m_MainGame_MonsterList->push_back(
 			CAbstractFactory<CBoss_A>::Create(pMonsterInfo->ptPosition.x, pMonsterInfo->ptPosition.y)
 			);
 		break;
+	case BOSS_B:
+		m_MainGame_MonsterList->push_back(
+			CAbstractFactory<CBoss_B>::Create(pMonsterInfo->ptPosition.x, pMonsterInfo->ptPosition.y)
+		);
+		break;
+	case BOSS_C:
+		m_MainGame_MonsterList->push_back(
+			CAbstractFactory<CBoss_C>::Create(pMonsterInfo->ptPosition.x, pMonsterInfo->ptPosition.y)
+		);
+		break;
+
 	}
     CGameObject* pGameObj = dynamic_cast<CGameObject*>(m_MainGame_MonsterList->back());
     pGameObj->Get_StatusInfo().fMaxHP = (float)pMonsterInfo->iHP;

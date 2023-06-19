@@ -1,11 +1,11 @@
-#include "Boss_A.h"
+#include "Boss_B.h"
 #include "AbstractFactory.h"
 #include "Projectile/Bullet/NormalBullet.h"
 
 #include "Manager/CMainGame.h"
 
 
-void CBoss_A::Initialize(void)
+void CBoss_B::Initialize(void)
 {
 	m_tInfo = { 400.f, 500.f, 40.f, 40.f };
 	m_StatusInfo = { 200.f, 200.f, false };
@@ -18,7 +18,7 @@ void CBoss_A::Initialize(void)
 	m_pBullet = &CMainGame::Get_Instance().Get_ObjList()[BULLET];
 }
 
-int CBoss_A::Update(void)
+int CBoss_B::Update(void)
 {
 	m_fMove_Radian = m_fAngle * (PI / 180);
 
@@ -36,7 +36,7 @@ int CBoss_A::Update(void)
 		}												// 방향 찾기
 		if (m_fSpeed >= 0) {
 			if (!m_bArrive) {
-				m_fSpeed += -0.006f;
+				m_fSpeed += -0.007f;
 			}
 		}
 		if (m_fSpeed < 0) {
@@ -57,15 +57,11 @@ int CBoss_A::Update(void)
 		{
 			TimeLimit();
 			if (SwitchOn) {
-				m_fRadian = PI / 2;
-				m_pBullet->push_back(Create_NormalBullet(-m_fRadian, -90, -100));
-				m_pBullet->push_back(Create_NormalBullet(-m_fRadian, +90, -100));
-				m_fRadian = (PI / 2) + (PI / 9);
-				m_pBullet->push_back(Create_NormalBullet(-m_fRadian, -90, -100));
-				m_pBullet->push_back(Create_NormalBullet(-m_fRadian, +90, -100));
-				m_fRadian = (PI / 2) - (PI / 9);
-				m_pBullet->push_back(Create_NormalBullet(-m_fRadian, -90, -100));
-				m_pBullet->push_back(Create_NormalBullet(-m_fRadian, +90, -100));
+				m_fRadian = PI / 8;
+				for (int i = 0; i <16 ; ++i) {
+					m_fRadian += PI / 8;
+					m_pBullet->push_back(Create_NormalBullet(-m_fRadian, 0, 0));
+				}
 			}
 		}
 
@@ -80,7 +76,7 @@ int CBoss_A::Update(void)
 
 }
 
-void CBoss_A::Late_Update(void)
+void CBoss_B::Late_Update(void)
 {
 	if (125 > m_tInfo.fX || WINCX - 125 < m_tInfo.fX
 		|| 0 > m_tInfo.fY || WINCY - 125 < m_tInfo.fY)
@@ -88,7 +84,7 @@ void CBoss_A::Late_Update(void)
 
 }
 
-void CBoss_A::Render(HDC hDC)
+void CBoss_B::Render(HDC hDC)
 {
 
 	Rectangle(hDC, m_tInfo.fX - 100, m_tInfo.fY - 30,
@@ -163,15 +159,15 @@ void CBoss_A::Render(HDC hDC)
 
 }
 
-void CBoss_A::Release(void)
+void CBoss_B::Release(void)
 {
 }
 
-void CBoss_A::Collide(CObj& _rDst)
+void CBoss_B::Collide(CObj& _rDst)
 {
 }
 
-void CBoss_A::TimeLimit(void)
+void CBoss_B::TimeLimit(void)
 {
 
 	DWORD dwCurrentTime = GetTickCount64();
@@ -187,14 +183,23 @@ void CBoss_A::TimeLimit(void)
 
 }
 
-CObj* CBoss_A::Create_NormalBullet(float _fRadian, float _fMuzzleX, float _fMuzzleY)
+CObj* CBoss_B::Create_NormalBullet(float _fRadian, float _fMuzzleX, float _fMuzzleY)
 {
 	CObj* pNormalBullet = CAbstractFactory<CNormalBullet>::Create(m_tInfo.fX, m_tInfo.fY);
 	CNormalBullet* pTemp = dynamic_cast<CNormalBullet*>(pNormalBullet);
 
-	pTemp->Set_Bulletinfo(_fRadian, m_tInfo.fX - _fMuzzleX, m_tInfo.fY - _fMuzzleY, 15, 1);
+	pTemp->Set_Bulletinfo(_fRadian, m_tInfo.fX - _fMuzzleX, m_tInfo.fY - _fMuzzleY, 14, 2);
 
 
 	return pNormalBullet;
 }
 
+CObj* CBoss_B::Create_GuidedBullet(float _fRadian, float _fMuzzleX, float _fMuzzleY)
+{
+	CObj* pGuidedBullet = CAbstractFactory<CGuidedBullet>::Create(m_tInfo.fX, m_tInfo.fY);
+	CGuidedBullet* pTemp = dynamic_cast<CGuidedBullet*>(pGuidedBullet);
+
+	pTemp->Set_Bulletinfo(_fRadian, m_tInfo.fX - _fMuzzleX, m_tInfo.fY - _fMuzzleY);
+
+	return pGuidedBullet;
+}

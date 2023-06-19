@@ -15,6 +15,7 @@ void CMiniAirplane::Initialize(void)
 {
 	m_tInfo.fCX = 40.f;
 	m_tInfo.fCY = 40.f;
+	m_StatusInfo = { 25.f, 25.f, false };
 
 	m_fSpeed = 5.f;
 
@@ -27,11 +28,20 @@ int CMiniAirplane::Update(void)
 	m_tInfo.fY = m_pTarget->Get_Info().fY;
 
 	// 1초마다 총알 발사	
-	if (m_dwTime + 1000 < GetTickCount()) {
-		m_pBullet->push_back(Create_NormalBullet(-50.f, 0));
-		m_pBullet->push_back(Create_NormalBullet(50.f, 0));
-		m_dwTime = GetTickCount();
+	if (m_iPrimaryWeapon_MaxDelay <= m_iPrimaryWeapon_Delay) {
+		if (m_dwTime + 1000 < GetTickCount64()){
+			m_pBullet->push_back(Create_NormalBullet(-50.f, 0));
+			m_pBullet->push_back(Create_NormalBullet(50.f, 0));
+			m_dwTime = GetTickCount64();
+		}
+
+		m_iPrimaryWeapon_Delay = 0;
+
 	}
+
+	// 주무기 딜레이값 변화
+	if (m_iPrimaryWeapon_MaxDelay < ++m_iPrimaryWeapon_Delay)
+		m_iPrimaryWeapon_Delay = m_iPrimaryWeapon_MaxDelay;
 
 	__super::Update_Rect();
 

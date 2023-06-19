@@ -8,6 +8,8 @@ void CMonster_TypeA::Initialize(void)
 	__super::Initialize();
 
 	m_tInfo = { 400.f, 500.f, 60.f, 60.f };
+	m_StatusInfo = { 3.f, 3.f, false };
+
 	m_fSpeed = 2.f;
 	m_spinspeed = 300.f;
 	m_isOnField = false;
@@ -49,6 +51,9 @@ int CMonster_TypeA::Update(void)
 
 void CMonster_TypeA::Late_Update(void)
 {
+	if ( WINCY + 125 < m_tInfo.fY)
+		m_bDead = true;
+
 	m_fRadian += m_spinspeed;
 
 	m_fMuzzleX = cos(m_fRadian) * 30.f;

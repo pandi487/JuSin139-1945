@@ -1,9 +1,10 @@
 #pragma once
 #include "CObj.h"
+#include "GameObject.h"
 #include "Projectile/Bullet/Bullet.h"
 #include "Projectile/Bullet/NormalBullet.h"
 
-class CMiniAirplane : public CObj
+class CMiniAirplane : public CGameObject
 {
 public:
 	CMiniAirplane();
@@ -27,7 +28,7 @@ private:
 	list<CObj*>* m_pBullet;
 
 private:
-	int					m_iPrimaryWeapon_MaxDelay = 6;	// 0.1초
+	int					m_iPrimaryWeapon_MaxDelay = 12;	// 0.2초
 	int					m_iPrimaryWeapon_Delay = 0;		// 주무기 발사 딜레이
 
 };

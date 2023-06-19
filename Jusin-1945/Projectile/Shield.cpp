@@ -76,7 +76,10 @@ void CShield::Collide(CObj& _rDst)
 	if (nullptr != pGObj && this->Get_Owner() != pGObj 
 		&& this->Get_TeamID() != pGObj->Get_TeamID())
 	{
-		pGObj->Set_Dead();
+		if (pGObj->Get_StatusInfo().fHP > 0)
+			pGObj->Get_StatusInfo().fHP -= 2;
+		else if (pGObj->Get_StatusInfo().fHP <= 0)
+			pGObj->Set_Dead();
 	}
 
 	CBullet* pBullet = dynamic_cast<CBullet*>(&_rDst);
